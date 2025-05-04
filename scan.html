@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinEa</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <style>
+        h1 {
+            color: #ff6b81;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        #drop-area {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+            background-color: #f0f0f0;
+        }
+        
+        #drop-area img {
+            width: 50px;
+            opacity: 0.5;
+        }
+        
+        #drop-area p {
+            margin-top: 10px;
+            color: #777;
+        }
+        
+        #image-container img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            background-color: #eee;
+            border-radius: 10px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 20px;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .pink-bar {
+            background-color: #ff6b81;
+        }
+        
+        .orange-bar {
+            background-color: #ff9f43;
+        }
+        
+        #time-container {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="top-bar">
+                <img src="icons/SkinEa.png" alt="SkinEa logo" class="logo" />
+                <img src="icons/settings_icon.png" alt="Settings" class="settings-icon" />
+            </div>
+        </header>
+
+        <section class="scan-section">
+
+            <div class="container">
+                <div id="drop-area">
+                    <img src="https://cdn-icons-png.flaticon.com/512/109/109612.png" alt="Upload Icon">
+                    <p>Drag & Drop ose Kliko për të ngarkuar një foto</p>
+                    <input type="file" id="imageUpload" accept="image/*" hidden>
+                </div>
+                <div id="image-container"></div>
+                <div id="label-container"></div>
+                <div id="time-container"></div>
+            </div>
+
+        </section>
+        <footer class="footer">
+            <div class="footer-nav">
+                <a href="aichat.html" class="footer-btn">
+                    <img src="icons/Ai_icon.png" alt="AI Chat" />
+                    <span>AI Chat</span>
+                </a>
+                <a href="scan.html" class="footer-btn active">
+                    <img src="icons/active_scan.png" alt="Mole Scan" />
+                    <span>Scanner</span>
+                </a>
+                <a href="index.html" class="footer-btn ">
+                    <img src="icons/home_icon.png" alt="Home" />
+                    <span>Home</span>
+                </a>
+                <a href="products.html" class="footer-btn">
+                    <img src="icons/products_icon.png" alt="Products" />
+                    <span>Products</span>
+                </a>
+                <a href="blog.html" class="footer-btn">
+                    <img src="icons/blog_icon.png" alt="Blog" />
+                    <span>Blog</span>
+                </a>
+            </div>
+
+            <div class="home-indicator">
+                <img src="icons/home_indicator.png" alt="home_indicator" />
+            </div>
+        </footer>
+    </div>
+    <script>
+        const URL = "https://teachablemachine.withgoogle.com/models/Nzm7SqHut/";
+        let model, labelContainer, maxPredictions;
+
+        async function init() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+            labelContainer = document.getElementById("label-container");
+        }
+
+        async function predict(imageElement) {
+            const startTime = performance.now();
+            const prediction = await model.predict(imageElement);
+            const endTime = performance.now();
+            const elapsedTime = (endTime - startTime).toFixed(2);
+
+            labelContainer.innerHTML = "";
+            prediction.forEach(pred => {
+                const percentage = (pred.probability * 100).toFixed(2);
+                const progressBar = document.createElement("div");
+                progressBar.className = "progress-bar";
+
+                const progress = document.createElement("div");
+                progress.className = "progress " + (percentage > 50 ? "pink-bar" : "orange-bar");
+                progress.style.width = percentage + "%";
+                progress.innerText = `${pred.className}: ${percentage}%`;
+
+                progressBar.appendChild(progress);
+                labelContainer.appendChild(progressBar);
+            });
+
+            document.getElementById("time-container").innerText = `Koha e analizës: ${elapsedTime} ms`;
+        }
+
+        function handleFile(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                img.onload = function() {
+                    document.getElementById("image-container").innerHTML = "";
+                    document.getElementById("image-container").appendChild(img);
+                    predict(img);
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+
+        document.getElementById("imageUpload").addEventListener("change", function(event) {
+            if (event.target.files.length > 0) {
+                handleFile(event.target.files[0]);
+            }
+        });
+
+        const dropArea = document.getElementById("drop-area");
+        dropArea.addEventListener("click", () => document.getElementById("imageUpload").click());
+        dropArea.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            dropArea.style.borderColor = "#ff6b81";
+        });
+        dropArea.addEventListener("dragleave", () => dropArea.style.borderColor = "#ccc");
+        dropArea.addEventListener("drop", (event) => {
+            event.preventDefault();
+            dropArea.style.borderColor = "#ccc";
+            if (event.dataTransfer.files.length > 0) {
+                handleFile(event.dataTransfer.files[0]);
+            }
+        });
+
+        init();
+    </script>
+</body>
+
+</html>

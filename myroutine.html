@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkinEa</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <div class="app-container">
+        <header class="header">
+            <div class="top-bar">
+                <img src="icons/SkinEa.png" alt="SkinEa logo" class="logo" />
+                <img src="icons/settings_icon.png" alt="Settings" class="settings-icon" />
+            </div>
+        </header>
+
+
+        <main>
+            <section class="myroutine-section">
+                <section class="horizontal-scroll-section">
+                    <h2 class="section-title">Recommended morning routine</h2>
+
+                    <div class="horizontal-grid">
+
+                        <div class="product-card">
+                            <div class="card-top">
+                                <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                                <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="skin-type" data-skin="All skin types"></span>
+                                <p class="brand-name">Product Brand</p>
+                                <p class="product-name">Product Name</p>
+                            </div>
+                        </div>
+
+
+                        <div class="product-card">
+                            <div class="card-top">
+                                <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                                <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="skin-type" data-skin="Normal skin"></span>
+                                <p class="brand-name">Product Brand</p>
+                                <p class="product-name">Product Name</p>
+                            </div>
+                        </div>
+
+
+                        <div class="product-card">
+                            <div class="card-top">
+                                <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                                <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="skin-type" data-skin="Dry skin"></span>
+                                <p class="brand-name">Product Brand</p>
+                                <p class="product-name">Product Name</p>
+                            </div>
+                        </div>
+
+
+                        <div class="product-card">
+                            <div class="card-top">
+                                <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                                <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="skin-type" data-skin="Oily skin"></span>
+                                <p class="brand-name">Product Brand</p>
+                                <p class="product-name">Product Name</p>
+                            </div>
+                        </div>
+
+
+                        <div class="product-card">
+                            <div class="card-top">
+                                <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                                <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="skin-type" data-skin="Combination skin"></span>
+                                <p class="brand-name">Product Brand</p>
+                                <p class="product-name">Product Name</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="popup-overlay" id="popupOverlay">
+                        <div class="product-popup" id="productPopup">
+                            <div class="product-popup-content">
+                                <div class="popup-indicator"></div>
+
+                                <div class="popup-product">
+                                    <div class="popup-image-container">
+                                        <img src="icons/prod_image.png" alt="Product Image" class="popup-product-photo" />
+                                        <div class="wishlist-container-popup">
+                                            <img src="icons/heart.png" alt="Wishlist" class="popup-wishlist-icon" />
+                                        </div>
+                                    </div>
+                                    <div class="popup-product-name">
+                                        <p class="popup-brand-name">Product Brand</p>
+                                        <p class="popup-product-name-bold">Product Name Name</p>
+                                    </div>
+                                    <button class="buy-button">Buy Now</button>
+                                </div>
+
+
+                                <div class="popup-section">
+                                    <h2>How to use product</h2>
+                                    <p class="popup-text">
+                                        For combination skin with sensitivity, gently apply the toner using a cotton pad, focusing on areas prone to redness and irritation...
+                                    </p>
+                                </div>
+
+                                <div class="popup-section">
+                                    <h2>Ingredients</h2>
+                                    <p class="popup-text">
+                                        Water, Hydrogenated Hydrolysate Starch, Sodium Pca, Allantoin, Phenoxyethanol, Disodium Edta...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <section class="horizontal-scroll-section">
+                    <h2 class="section-title">Recommended night routine</h2>
+
+                    <div class="horizontal-grid">
+
+                        <div class="product-card">
+                            <div class="card-top">
+                                <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                                <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="skin-type" data-skin="All skin types"></span>
+                                <p class="brand-name">Product Brand</p>
+                                <p class="product-name">Product Name</p>
+                            </div>
+                        </div>
+
+
+                        <div class="product-card">
+                            <div class="card-top">
+                                <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                                <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="skin-type" data-skin="Normal skin"></span>
+                                <p class="brand-name">Product Brand</p>
+                                <p class="product-name">Product Name</p>
+                            </div>
+                        </div>
+
+
+                        <div class="product-card">
+                            <div class="card-top">
+                                <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                                <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="skin-type" data-skin="Dry skin"></span>
+                                <p class="brand-name">Product Brand</p>
+                                <p class="product-name">Product Name</p>
+                            </div>
+                        </div>
+
+
+                        <div class="product-card">
+                            <div class="card-top">
+                                <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                                <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="skin-type" data-skin="Oily skin"></span>
+                                <p class="brand-name">Product Brand</p>
+                                <p class="product-name">Product Name</p>
+                            </div>
+                        </div>
+
+
+                        <div class="product-card">
+                            <div class="card-top">
+                                <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                                <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="skin-type" data-skin="Combination skin"></span>
+                                <p class="brand-name">Product Brand</p>
+                                <p class="product-name">Product Name</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="popup-overlay" id="popupOverlay">
+                        <div class="product-popup" id="productPopup">
+                            <div class="product-popup-content">
+                                <div class="popup-indicator"></div>
+
+                                <div class="popup-product">
+                                    <div class="popup-image-container">
+                                        <img src="icons/prod_image.png" alt="Product Image" class="popup-product-photo" />
+                                        <div class="wishlist-container-popup">
+                                            <img src="icons/heart.png" alt="Wishlist" class="popup-wishlist-icon" />
+                                        </div>
+                                    </div>
+                                    <div class="popup-product-name">
+                                        <p class="popup-brand-name">Product Brand</p>
+                                        <p class="popup-product-name-bold">Product Name Name</p>
+                                    </div>
+                                    <button class="buy-button">Buy Now</button>
+                                </div>
+
+
+                                <div class="popup-section">
+                                    <h2>How to use product</h2>
+                                    <p class="popup-text">
+                                        For combination skin with sensitivity, gently apply the toner using a cotton pad, focusing on areas prone to redness and irritation...
+                                    </p>
+                                </div>
+
+                                <div class="popup-section">
+                                    <h2>Ingredients</h2>
+                                    <p class="popup-text">
+                                        Water, Hydrogenated Hydrolysate Starch, Sodium Pca, Allantoin, Phenoxyethanol, Disodium Edta...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </section>
+        </main>
+
+
+        <footer class="footer">
+            <div class="footer-nav">
+                <a href="aichat.html" class="footer-btn">
+                    <img src="icons/Ai_icon.png" alt="AI Chat" />
+                    <span>AI Chat</span>
+                </a>
+                <a href="scan.html" class="footer-btn">
+                    <img src="icons/scan.png" alt="Mole Scan" />
+                    <span>Scanner</span>
+                </a>
+                <a href="index.html" class="footer-btn">
+                    <img src="icons/home_icon.png" alt="Home" />
+                    <span>Home</span>
+                </a>
+                <a href="products.html" class="footer-btn">
+                    <img src="icons/products_icon.png" alt="Products" />
+                    <span>Products</span>
+                </a>
+                <a href="blog.html" class="footer-btn">
+                    <img src="icons/blog_icon.png" alt="Blog" />
+                    <span>Blog</span>
+                </a>
+            </div>
+
+            <div class="home-indicator">
+                <img src="icons/home_indicator.png" alt="home_indicator" />
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active')); // Hiq active nga të gjithë
+                tab.classList.add('active'); // Shto active vetëm tek ky që klikova
+            });
+        });
+    </script>
+
+
+    <script>
+        const wishlistButtons = document.querySelectorAll('.wishlist-container');
+
+        wishlistButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const img = button.querySelector('img');
+                const isActive = button.getAttribute('data-active') === "true";
+
+                if (isActive) {
+                    img.src = 'icons/heart.png'; // rikthehet në heart normal
+                    button.setAttribute('data-active', "false");
+                } else {
+                    img.src = 'icons/active_heart.png'; // vendoset active heart
+                    button.setAttribute('data-active', "true");
+                }
+            });
+        });
+    </script>
+
+
+    <script>
+        const skinTypeElements = document.querySelectorAll('.skin-type');
+
+        skinTypeElements.forEach(el => {
+            const skin = el.getAttribute('data-skin');
+
+            if (skin) {
+                switch (skin.trim().toLowerCase()) {
+                    case "all skin types":
+                        el.classList.add('skin-all');
+                        el.textContent = "All skin types";
+                        break;
+                    case "normal skin":
+                        el.classList.add('skin-normal');
+                        el.textContent = "Normal skin";
+                        break;
+                    case "dry skin":
+                        el.classList.add('skin-dry');
+                        el.textContent = "Dry skin";
+                        break;
+                    case "oily skin":
+                        el.classList.add('skin-oily');
+                        el.textContent = "Oily skin";
+                        break;
+                    case "combination skin":
+                        el.classList.add('skin-combination');
+                        el.textContent = "Combination skin";
+                        break;
+                    default:
+                        el.style.display = "none"; // fsheh nëse nuk ka kategori të saktë
+                }
+            }
+        });
+    </script>
+
+
+    <script>
+        const productCards = document.querySelectorAll('.product-card');
+        const popup = document.getElementById('productPopup');
+        const overlay = document.getElementById('popupOverlay');
+
+        // Funksione për të ndaluar / rikthyer scroll-in në body
+        const disableScroll = () => {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        };
+
+        const enableScroll = () => {
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+        };
+
+        // Funksion për të mbyllur popup-in me animacion smooth
+        function closePopupSmooth() {
+            popup.classList.add('closing-popup');
+            popup.addEventListener('animationend', () => {
+                popup.classList.remove('open');
+                popup.classList.remove('closing-popup');
+                overlay.classList.remove('active');
+                popup.style.transform = 'translateY(100%)';
+                enableScroll();
+            }, {
+                once: true
+            });
+        }
+
+        // Hap popup-in kur klikojmë një kartë
+        productCards.forEach(card => {
+            card.addEventListener('click', function(event) {
+                if (event.target.closest('.wishlist-container')) return;
+                overlay.classList.add('active');
+                popup.classList.add('open');
+                popup.style.transform = 'translateY(0)';
+                disableScroll();
+            });
+        });
+
+        // Mbyll popup-in kur klikojmë jashtë (overlay)
+        overlay.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                closePopupSmooth();
+            }
+        });
+
+        // Drag për të mbyllur popup-in vetëm nga maja
+        let isDragging = false;
+        let startY = 0;
+        let currentY = 0;
+        let draggingAllowed = false;
+
+        popup.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+            currentY = startY;
+
+            draggingAllowed = popup.scrollTop === 0;
+            isDragging = true;
+
+            if (draggingAllowed) {
+                popup.style.transition = '';
+            }
+        });
+
+        popup.addEventListener('touchmove', (e) => {
+            if (!isDragging || !draggingAllowed) return;
+
+            currentY = e.touches[0].clientY;
+            const diff = currentY - startY;
+
+            if (diff > 0) {
+                popup.style.transform = `translateY(${diff}px)`;
+            }
+        });
+
+        popup.addEventListener('touchend', () => {
+            if (!isDragging || !draggingAllowed) return;
+
+            isDragging = false;
+            draggingAllowed = false;
+
+            const diff = currentY - startY;
+
+            if (diff > 100) {
+                popup.style.transition = 'transform 0.3s ease';
+                popup.style.transform = 'translateY(100%)';
+                closePopupSmooth();
+            } else {
+                popup.style.transition = 'transform 0.3s ease';
+                popup.style.transform = 'translateY(0)';
+            }
+        });
+
+        // 🎯 Wishlist në popup - aktivizohet me klikim
+        const popupWishlist = document.querySelector('.wishlist-container-popup');
+        const wishlistIcon = popupWishlist.querySelector('img');
+
+        popupWishlist.addEventListener('click', () => {
+            const isActive = popupWishlist.classList.toggle('active');
+            wishlistIcon.src = isActive ? 'icons/active_heart.png' : 'icons/heart.png';
+        });
+    </script>
+
+
+
+</body>
+
+</html>

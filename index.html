@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkinEa</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <div class="app-container">
+        <header class="header">
+            <div class="top-bar">
+                <img src="icons/SkinEa.png" alt="SkinEa logo" class="logo" />
+                <img src="icons/settings_icon.png" alt="Settings" class="settings-icon" />
+            </div>
+        </header>
+
+        <section class="widget-cards-section">
+            <a href="skinea.html" class="widget-card large-widget">
+                <img src="icons/scan-widget.jpg" alt="SkinEa" class="widget-image">
+            </a>
+
+            <div class="small-widgets-row">
+                <a href="scanner.html" class="widget-card small-widget">
+                    <img src="icons/ai-widget.jpg" alt="Scanner" class="widget-image">
+                </a>
+                <a href="aibot.html" class="widget-card small-widget">
+                    <img src="icons/favourites-widget.jpg" alt="AiBot" class="widget-image">
+                </a>
+            </div>
+        </section>
+
+
+
+
+
+        <main>
+
+            <section class="horizontal-scroll-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recommended products</h2>
+                    <a href="products.html" class="view-all-link">View all</a>
+                </div>
+
+                <div class="horizontal-grid">
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="All skin types"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Normal skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Dry skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Oily skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Combination skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Combination skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="popup-overlay" id="popupOverlay">
+                    <div class="product-popup" id="productPopup">
+                        <div class="product-popup-content">
+                            <div class="popup-indicator"></div>
+
+                            <div class="popup-product">
+                                <div class="popup-image-container">
+                                    <img src="icons/prod_image.png" alt="Product Image" class="popup-product-photo" />
+                                    <div class="wishlist-container-popup">
+                                        <img src="icons/heart.png" alt="Wishlist" class="popup-wishlist-icon" />
+                                    </div>
+                                </div>
+                                <div class="popup-product-name">
+                                    <p class="popup-brand-name">Product Brand</p>
+                                    <p class="popup-product-name-bold">Product Name Name</p>
+                                </div>
+                                <button class="buy-button">Buy Now</button>
+                            </div>
+
+
+                            <div class="popup-section">
+                                <h2>How to use product</h2>
+                                <p class="popup-text">
+                                    For combination skin with sensitivity, gently apply the toner using a cotton pad, focusing on areas prone to redness and irritation...
+                                </p>
+                            </div>
+
+                            <div class="popup-section">
+                                <h2>Ingredients</h2>
+                                <p class="popup-text">
+                                    Water, Hydrogenated Hydrolysate Starch, Sodium Pca, Allantoin, Phenoxyethanol, Disodium Edta...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="horizontal-scroll-section">
+                <div class="section-header">
+                    <h2 class="section-title">Blog</h2>
+                    <a href="blog.html" class="view-all-link">View all</a>
+                </div>
+
+                <div class="horizontal-grid">
+
+                    <div class="blog-card" data-type="skin cancer" data-stories="icons/story1.jpg,icons/story2.jpg,icons/story7.mp4">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Don't forget to use SPF</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card" data-type="skin cancer" data-stories="icons/story1.jpg,icons/story2.jpg,icons/story3.jpg">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Check your moles regularly</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card" data-type="skin care">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Don't forget to use SPF</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card" data-type="skin care">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Don't forget to use SPF</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card" data-type="skin care">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Don't forget to use SPF</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card" data-type="e-books">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Don't forget to use SPF</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Popup për Stories -->
+            <div id="story-popup" class="story-popup">
+                <div class="story-content">
+                    <div class="story-bars" id="story-bars"></div>
+                    <span class="close-btn">&times;</span>
+                    <img src="" alt="Story Image" class="story-image" id="story-image" />
+                    <video class="story-video" id="story-video" muted playsinline></video>
+                </div>
+            </div>
+        </main>
+
+
+        <footer class="footer">
+            <div class="footer-nav">
+                <a href="aichat.html" class="footer-btn">
+                    <img src="icons/Ai_icon.png" alt="AI Chat" />
+                    <span>AI Chat</span>
+                </a>
+                <a href="scan.html" class="footer-btn">
+                    <img src="icons/scan.png" alt="Mole Scan" />
+                    <span>Scanner</span>
+                </a>
+                <a href="index.html" class="footer-btn active">
+                    <img src="icons/active_home_icon.png" alt="Home" />
+                    <span>Home</span>
+                </a>
+                <a href="products.html" class="footer-btn">
+                    <img src="icons/products_icon.png" alt="Products" />
+                    <span>Products</span>
+                </a>
+                <a href="blog.html" class="footer-btn">
+                    <img src="icons/blog_icon.png" alt="Blog" />
+                    <span>Blog</span>
+                </a>
+            </div>
+
+            <div class="home-indicator">
+                <img src="icons/home_indicator.png" alt="home_indicator" />
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active')); // Hiq active nga të gjithë
+                tab.classList.add('active'); // Shto active vetëm tek ky që klikova
+            });
+        });
+    </script>
+
+
+    <script>
+        const wishlistButtons = document.querySelectorAll('.wishlist-container');
+
+        wishlistButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const img = button.querySelector('img');
+                const isActive = button.getAttribute('data-active') === "true";
+
+                if (isActive) {
+                    img.src = 'icons/heart.png'; // rikthehet në heart normal
+                    button.setAttribute('data-active', "false");
+                } else {
+                    img.src = 'icons/active_heart.png'; // vendoset active heart
+                    button.setAttribute('data-active', "true");
+                }
+            });
+        });
+    </script>
+
+
+    <script>
+        const skinTypeElements = document.querySelectorAll('.skin-type');
+
+        skinTypeElements.forEach(el => {
+            const skin = el.getAttribute('data-skin');
+
+            if (skin) {
+                switch (skin.trim().toLowerCase()) {
+                    case "all skin types":
+                        el.classList.add('skin-all');
+                        el.textContent = "All skin types";
+                        break;
+                    case "normal skin":
+                        el.classList.add('skin-normal');
+                        el.textContent = "Normal skin";
+                        break;
+                    case "dry skin":
+                        el.classList.add('skin-dry');
+                        el.textContent = "Dry skin";
+                        break;
+                    case "oily skin":
+                        el.classList.add('skin-oily');
+                        el.textContent = "Oily skin";
+                        break;
+                    case "combination skin":
+                        el.classList.add('skin-combination');
+                        el.textContent = "Combination skin";
+                        break;
+                    default:
+                        el.style.display = "none"; // fsheh nëse nuk ka kategori të saktë
+                }
+            }
+        });
+    </script>
+
+
+    <script>
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        blogCards.forEach(card => {
+            const type = card.getAttribute('data-type');
+            const blogBottom = card.querySelector('.blog-bottom');
+
+            if (type && blogBottom) {
+                // Krijojmë badge-in
+                const badge = document.createElement('div');
+                badge.classList.add('blog-type');
+
+                // Krijojmë ikonën
+                const icon = document.createElement('img');
+                icon.classList.add('badge-icon');
+
+                // Krijojmë tekstin
+                const text = document.createElement('span');
+                text.classList.add('badge-text');
+
+                switch (type.trim().toLowerCase()) {
+                    case "skin cancer":
+                        badge.style.background = '#F3A5DA'; // rozë
+                        icon.src = "icons/cancer_ribbon.png"; // ikona për skin cancer
+                        text.textContent = "Awareness";
+                        break;
+
+                    case "skin care":
+                        badge.style.background = '#D1B1E0'; // lejla
+                        icon.src = "icons/skin_icon.png"; // ikona për skin care
+                        text.textContent = "Skin Care";
+                        break;
+
+                    case "e-books":
+                        badge.style.background = '#B3DFE1'; // kaltër
+                        icon.src = "icons/book_icon.png"; // ikona për e-books
+                        text.textContent = "E-Books";
+                        break;
+
+                    default:
+                        badge.style.background = '#cccccc';
+                        text.textContent = "Unknown";
+                }
+
+                // Bashkojmë ikonën dhe tekstin në badge
+                badge.appendChild(icon);
+                badge.appendChild(text);
+
+                // Futim badge-in përpara titullit
+                blogBottom.insertBefore(badge, blogBottom.querySelector('.blog-title'));
+            }
+        });
+    </script>
+
+
+    <script>
+        const productCards = document.querySelectorAll('.product-card');
+        const popup = document.getElementById('productPopup');
+        const overlay = document.getElementById('popupOverlay');
+
+        // Funksione për të ndaluar / rikthyer scroll-in në body
+        const disableScroll = () => {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        };
+
+        const enableScroll = () => {
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+        };
+
+        // Funksion për të mbyllur popup-in me animacion smooth
+        function closePopupSmooth() {
+            popup.classList.add('closing-popup');
+            popup.addEventListener('animationend', () => {
+                popup.classList.remove('open');
+                popup.classList.remove('closing-popup');
+                overlay.classList.remove('active');
+                popup.style.transform = 'translateY(100%)';
+                enableScroll();
+            }, {
+                once: true
+            });
+        }
+
+        // Hap popup-in kur klikojmë një kartë
+        productCards.forEach(card => {
+            card.addEventListener('click', function(event) {
+                if (event.target.closest('.wishlist-container')) return;
+                overlay.classList.add('active');
+                popup.classList.add('open');
+                popup.style.transform = 'translateY(0)';
+                disableScroll();
+            });
+        });
+
+        // Mbyll popup-in kur klikojmë jashtë (overlay)
+        overlay.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                closePopupSmooth();
+            }
+        });
+
+        // Drag për të mbyllur popup-in vetëm nga maja
+        let isDragging = false;
+        let startY = 0;
+        let currentY = 0;
+        let draggingAllowed = false;
+
+        popup.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+            currentY = startY;
+
+            draggingAllowed = popup.scrollTop === 0;
+            isDragging = true;
+
+            if (draggingAllowed) {
+                popup.style.transition = '';
+            }
+        });
+
+        popup.addEventListener('touchmove', (e) => {
+            if (!isDragging || !draggingAllowed) return;
+
+            currentY = e.touches[0].clientY;
+            const diff = currentY - startY;
+
+            if (diff > 0) {
+                popup.style.transform = `translateY(${diff}px)`;
+            }
+        });
+
+        popup.addEventListener('touchend', () => {
+            if (!isDragging || !draggingAllowed) return;
+
+            isDragging = false;
+            draggingAllowed = false;
+
+            const diff = currentY - startY;
+
+            if (diff > 100) {
+                popup.style.transition = 'transform 0.3s ease';
+                popup.style.transform = 'translateY(100%)';
+                closePopupSmooth();
+            } else {
+                popup.style.transition = 'transform 0.3s ease';
+                popup.style.transform = 'translateY(0)';
+            }
+        });
+
+        // 🎯 Wishlist në popup - aktivizohet me klikim
+        const popupWishlist = document.querySelector('.wishlist-container-popup');
+        const wishlistIcon = popupWishlist.querySelector('img');
+
+        popupWishlist.addEventListener('click', () => {
+            const isActive = popupWishlist.classList.toggle('active');
+            wishlistIcon.src = isActive ? 'icons/active_heart.png' : 'icons/heart.png';
+        });
+    </script>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const blogCards = document.querySelectorAll('.blog-card');
+            const popup = document.getElementById('story-popup');
+            const storyImage = document.getElementById('story-image');
+            const storyBars = document.getElementById('story-bars');
+            const closeBtn = document.querySelector('.close-btn');
+
+            let images = [];
+            let currentImage = 0;
+            let timer;
+            let isPaused = false;
+            let startY = 0;
+            let startTime = 0;
+            let elapsedTime = 0;
+            const animationDuration = 5000; // 5 sekonda për çdo story
+
+            function openPopup(imgArray) {
+                images = imgArray;
+                currentImage = 0;
+                popup.style.display = 'flex';
+                renderBars();
+                showImage(currentImage);
+            }
+
+            function closePopup() {
+                clearTimeout(timer);
+                const storyContent = popup.querySelector('.story-content');
+
+                // Heqim background-in e zi menjëherë
+                popup.style.background = 'transparent';
+
+                storyContent.classList.add('closing-animation');
+
+                storyContent.addEventListener('animationend', () => {
+                    popup.style.display = 'none';
+                    popup.style.background = 'rgba(0, 0, 0, 0.8)'; // Rindreq background-in për herën tjetër
+                    storyContent.classList.remove('closing-animation');
+                    currentImage = 0;
+                    elapsedTime = 0;
+                }, {
+                    once: true
+                });
+            }
+
+
+            function renderBars() {
+                storyBars.innerHTML = '';
+                images.forEach(() => {
+                    const bar = document.createElement('div');
+                    bar.className = 'story-bar';
+                    const fill = document.createElement('div');
+                    fill.className = 'story-bar-fill';
+                    bar.appendChild(fill);
+                    storyBars.appendChild(bar);
+                });
+            }
+
+            function showImage(index) {
+                const fills = document.querySelectorAll('.story-bar-fill');
+                const storyImage = document.getElementById('story-image');
+                const storyVideo = document.getElementById('story-video');
+                const currentSrc = images[index];
+
+                fills.forEach((fill, i) => {
+                    fill.style.width = i < index ? '100%' : '0';
+                    fill.style.animation = 'none';
+                });
+
+                if (fills[index]) {
+                    void fills[index].offsetWidth;
+                }
+
+                // Kontrollojmë nëse është video
+                if (currentSrc.endsWith('.mp4') || currentSrc.endsWith('.mov') || currentSrc.endsWith('.webm')) {
+                    storyImage.style.display = 'none';
+                    storyVideo.style.display = 'block';
+                    storyVideo.src = currentSrc;
+                    storyVideo.load(); // Ringarkojmë videon
+
+                    storyVideo.onloadedmetadata = () => {
+                        const videoDuration = storyVideo.duration * 1000; // sekonda -> milisekonda
+                        fills[index].style.animation = `progressAnimation ${videoDuration / 1000}s linear forwards`;
+                        fills[index].style.animationPlayState = 'running';
+                        storyVideo.play();
+                        startTimer(videoDuration);
+                    };
+                } else {
+                    storyVideo.pause();
+                    storyVideo.style.display = 'none';
+                    storyImage.style.display = 'block';
+                    storyImage.src = currentSrc;
+
+                    fills[index].style.animation = `progressAnimation ${animationDuration / 1000}s linear forwards`;
+                    fills[index].style.animationPlayState = 'running';
+                    startTimer(animationDuration);
+                }
+            }
+
+
+
+            function startTimer(duration) {
+                startTime = Date.now();
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    currentImage++;
+                    if (currentImage < images.length) {
+                        elapsedTime = 0;
+                        showImage(currentImage);
+                    } else {
+                        closePopup();
+                    }
+                }, duration - elapsedTime);
+            }
+
+
+            blogCards.forEach(function(card) {
+                card.addEventListener('click', function() {
+                    const storiesData = card.getAttribute('data-stories');
+                    if (storiesData) {
+                        const storiesArray = storiesData.split(',').map(s => s.trim());
+                        openPopup(storiesArray);
+                    }
+                });
+            });
+
+            closeBtn.addEventListener('click', closePopup);
+
+            popup.addEventListener('click', (e) => {
+                const x = e.clientX;
+                const width = window.innerWidth;
+
+                if (isPaused) return; // Nëse është pause, mos vazhdo
+
+                clearTimeout(timer);
+
+                if (x < width / 2) {
+                    // Klikim majtas
+                    if (currentImage > 0) {
+                        currentImage--;
+                        elapsedTime = 0;
+                        showImage(currentImage);
+                    } else {
+                        // Je në story të parë ➔ rifillim nga fillimi
+                        elapsedTime = 0;
+                        showImage(currentImage);
+                    }
+                } else {
+                    // Klikim djathtas
+                    currentImage++;
+                    if (currentImage < images.length) {
+                        elapsedTime = 0;
+                        showImage(currentImage);
+                    } else {
+                        closePopup();
+                    }
+                }
+            });
+
+            popup.addEventListener('mousedown', () => {
+                if (!isPaused) {
+                    isPaused = true;
+                    elapsedTime += Date.now() - startTime;
+                    clearTimeout(timer);
+                    const fills = document.querySelectorAll('.story-bar-fill');
+                    if (fills[currentImage]) {
+                        fills[currentImage].style.animationPlayState = 'paused';
+                    }
+                }
+            });
+
+            popup.addEventListener('mouseup', () => {
+                if (isPaused) {
+                    isPaused = false;
+                    const fills = document.querySelectorAll('.story-bar-fill');
+                    if (fills[currentImage]) {
+                        fills[currentImage].style.animationPlayState = 'running';
+                    }
+                    startTimer();
+                }
+            });
+
+            popup.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+                if (!isPaused) {
+                    isPaused = true;
+                    elapsedTime += Date.now() - startTime;
+                    clearTimeout(timer);
+                    const fills = document.querySelectorAll('.story-bar-fill');
+                    if (fills[currentImage]) {
+                        fills[currentImage].style.animationPlayState = 'paused';
+                    }
+                }
+            });
+
+            popup.addEventListener('touchend', (e) => {
+                const endY = e.changedTouches[0].clientY;
+                if (endY - startY > 100) {
+                    closePopup();
+                } else {
+                    if (isPaused) {
+                        isPaused = false;
+                        const fills = document.querySelectorAll('.story-bar-fill');
+                        if (fills[currentImage]) {
+                            fills[currentImage].style.animationPlayState = 'running';
+                        }
+                        startTimer();
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

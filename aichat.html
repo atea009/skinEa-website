@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SkinEa AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        #chat-container {
+            background: white;
+            width: 400px;
+            max-width: 90%;
+            height: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        #messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+        }
+        
+        .user {
+            text-align: right;
+            color: #333;
+        }
+        
+        .bot {
+            text-align: left;
+            color: #007BFF;
+        }
+        
+        #input-container {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+        
+        #userInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        #sendButton {
+            padding: 10px 15px;
+            margin-left: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #sendButton:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="chat-container">
+        <div id="messages"></div>
+        <div id="input-container">
+            <input type="text" id="userInput" placeholder="Shkruaj pyetjen tuaj..." />
+            <button id="sendButton" onclick="sendMessage()">Dërgo</button>
+        </div>
+    </div>
+
+    <script>
+        const API_KEY = "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"; // API Key e OpenRouter
+        const MODEL = "mistral-7b"; // Modeli falas që përdorim
+
+        async function sendMessage() {
+            const input = document.getElementById("userInput");
+            const text = input.value.trim();
+            if (text === "") return;
+
+            addMessage(text, 'user');
+            input.value = "";
+
+            try {
+                const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${API_KEY}`,
+                        'Content-Type': 'application/json',
+                        'HTTP-Referer': 'https://skinea.netlify.app',
+                        'X-Title': 'SkinEa Chatbot'
+
+                    },
+                    body: JSON.stringify({
+                        model: MODEL,
+                        messages: [{
+                            role: "user",
+                            content: text
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Problem me API ose limit.");
+                }
+
+                const data = await response.json();
+                const botText = data.choices[0].message.content.trim();
+                addMessage(botText, 'bot');
+
+            } catch (error) {
+                addMessage("Ka ndodhur një problem. Provo më vonë!", 'bot');
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messagesDiv = document.getElementById("messages");
+            const messageDiv = document.createElement("div");
+            messageDiv.className = `message ${sender}`;
+            messageDiv.textContent = (sender === 'user' ? "Ti: " : "SkinEa: ") + text;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    </script>
+
+</body>
+
+</html>
