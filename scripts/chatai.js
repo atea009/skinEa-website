@@ -13,7 +13,7 @@ chatForm.addEventListener('submit', async(e) => {
     document.getElementById('user-input').value = '';
 
     try {
-        const response = await fetch('https://skinea-ai-server.onrender.com/chat', {
+        const response = await fetch('https://skinea-ai-server-1.onrender.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
