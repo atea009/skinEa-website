@@ -917,17 +917,22 @@ footer {
 
 /* CHAT PAGE SPECIAL STYLES */
 
+
+/* CHAT PAGE SPECIAL STYLES - FINAL */
+
 .chat-page-container {
-    background: #f9f9f9;
-    min-height: 100vh;
+    /* background: #f9f9f9; */
+    background-color: #fafafa;
+    height: 100vh;
+    width: 100%;
     max-width: 1125px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
     overflow: hidden;
-    /* parandalon body scrolling horizontal */
+    position: relative;
 }
+
+
+/* Header fikse sipër */
 
 .chat-header {
     background: #ffffff;
@@ -935,9 +940,14 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 30px 20px;
-    /* 30px sipër dhe poshtë */
-    flex-shrink: 0;
-    z-index: 2;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: 1125px;
+    margin: 0 auto;
+    z-index: 1000;
 }
 
 .chat-logo {
@@ -951,15 +961,26 @@ footer {
     cursor: pointer;
 }
 
+
+/* Zona e mesazheve që bëhet scroll */
+
 .chat-messages {
-    flex: 1;
-    padding: 20px;
+    position: absolute;
+    top: 80px;
+    /* Pas header-it */
+    bottom: 85px;
+    /* Sipër input-it */
+    left: 0;
+    right: 0;
     overflow-y: auto;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    background: #f9f9f9;
 }
+
+
+/* Bubble e mesazheve */
 
 .message-bubble {
     max-width: 70%;
@@ -968,11 +989,10 @@ footer {
     font-family: "Calibri", sans-serif;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    overflow-x: auto;
 }
 
 
-/* Bubbles me këndet që do ti */
+/* Formë bubble specifike */
 
 .user-message {
     background: #ffffff;
@@ -989,43 +1009,62 @@ footer {
 }
 
 
-/* Fusha e input-it */
+/* Input-i fikse poshtë */
 
 .chat-input-container {
     background: #ffffff;
+    position: fixed;
+    bottom: 25px;
+    left: 10px;
+    right: 10px;
+    width: 90%;
+    max-width: 1125px;
+    margin: 0 auto;
     padding: 10px 20px;
-    margin: 60px 20px;
-    /* 30px margin poshtë për ta ulur më shumë */
     border-radius: 14px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    /* të mos tkurret */
+    align-items: flex-end;
+    /* Shumë e rëndësishme: input dhe send të vendosen në fund */
+    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    gap: 10px;
 }
 
-.chat-input {
+.input-area {
     flex: 1;
-    max-height: 30vw;
-    /* maksimumi 30% e dritares */
-    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Teksti që zmadhohet automatikisht */
+
+.chat-input {
+    width: 100%;
+    padding: 10px 10px;
     border: none;
     outline: none;
     font-size: 16px;
     font-family: "Calibri", sans-serif;
-    overflow-x: auto;
+    max-height: 200px;
     resize: none;
+    overflow-y: auto;
+    border-radius: 8px;
 }
+
+
+/* Send butoni */
 
 .send-button {
     background: none;
     border: none;
     cursor: pointer;
-    margin-left: 15px;
     display: flex;
-    justify-content: flex-end;
-    /* spostojmë në fund */
-    align-items: center;
+    align-items: flex-end;
+    /* Mos qëndrojë në mes */
+    justify-content: center;
+    padding-bottom: 5px;
+    /* Opcionale, pak më ulët */
 }
 
 .send-button img {
