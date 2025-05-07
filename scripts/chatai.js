@@ -7,13 +7,12 @@ chatForm.addEventListener('submit', async(e) => {
     const userInput = document.getElementById('user-input').value.trim();
     if (!userInput) return;
 
-    // Afisho mesazhin e përdoruesit
     chatBox.innerHTML += `<div class="user-message">${userInput}</div>`;
     chatBox.scrollTop = chatBox.scrollHeight;
     document.getElementById('user-input').value = '';
 
     try {
-        const response = await fetch('https://skinea-ai-server-1.onrender.com', {
+        const response = await fetch('https://skinea-ai-server-1.onrender.com/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
