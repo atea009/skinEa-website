@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>SkinEa AI Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkinEa</title>
+    <link rel="stylesheet" href="styles.css" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -82,7 +84,7 @@
         <div id="messages"></div>
         <div id="input-container">
             <input type="text" id="userInput" placeholder="Shkruaj pyetjen tuaj..." />
-            <button id="sendButton" onclick="sendMessage()">Dërgo</button>
+            <button id="sendButton" onclick="sendMessage()">Send</button>
         </div>
     </div>
 
@@ -124,7 +126,7 @@
             const messagesDiv = document.getElementById("messages");
             const messageDiv = document.createElement("div");
             messageDiv.className = `message ${sender}`;
-            messageDiv.textContent = (sender === 'user' ? "Ti: " : "SkinEa: ") + text;
+            messageDiv.textContent = (sender === 'user' ? "Me: " : "SkinEa: ") + text;
             messagesDiv.appendChild(messageDiv);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
