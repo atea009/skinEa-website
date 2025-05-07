@@ -3,94 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SkinEa</title>
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f5f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        
-        #chat-container {
-            background: white;
-            width: 400px;
-            max-width: 90%;
-            height: 600px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        
-        #messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        
-        .message {
-            margin-bottom: 15px;
-        }
-        
-        .user {
-            text-align: right;
-            color: #333;
-        }
-        
-        .bot {
-            text-align: left;
-            color: #007BFF;
-        }
-        
-        #input-container {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-        }
-        
-        #userInput {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        
-        #sendButton {
-            padding: 10px 15px;
-            margin-left: 10px;
-            background: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        #sendButton:hover {
-            background: #0056b3;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinEa Chat</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <div id="chat-container">
-        <div id="messages"></div>
-        <div id="input-container">
-            <input type="text" id="userInput" placeholder="Shkruaj pyetjen tuaj..." />
-            <button id="sendButton" onclick="sendMessage()">Send</button>
+    <div class="app-container chat-page-container">
+        <div class="chat-header">
+            <img src="icons/logo.png" alt="SkinEa Logo" class="chat-logo">
+            <a href="index.html" class="back-button">
+                <img src="icons/back_arrow.png" alt="Back">
+            </a>
+        </div>
+
+        <div class="chat-messages"></div>
+
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" placeholder="Type your message..." />
+            <button class="send-button" onclick="sendMessage()">
+            <img src="icons/send_icon.png" alt="Send">
+        </button>
         </div>
     </div>
 
     <script>
         async function sendMessage() {
-            const input = document.getElementById("userInput");
+            const input = document.querySelector(".chat-input");
             const text = input.value.trim();
             if (text === "") return;
 
@@ -109,7 +49,7 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error("Problem me serverin.");
+                    throw new Error("Server problem.");
                 }
 
                 const data = await response.json();
@@ -117,16 +57,15 @@
                 addMessage(botText, 'bot');
 
             } catch (error) {
-                addMessage("Ka ndodhur një problem. Provo më vonë!", 'bot');
+                addMessage("An error occurred. Please try again later!", 'bot');
             }
         }
 
-
         function addMessage(text, sender) {
-            const messagesDiv = document.getElementById("messages");
+            const messagesDiv = document.querySelector(".chat-messages");
             const messageDiv = document.createElement("div");
-            messageDiv.className = `message ${sender}`;
-            messageDiv.textContent = (sender === 'user' ? "Me: " : "SkinEa: ") + text;
+            messageDiv.className = `message-bubble ${sender}-message`;
+            messageDiv.textContent = text;
             messagesDiv.appendChild(messageDiv);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
