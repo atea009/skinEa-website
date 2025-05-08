@@ -288,11 +288,13 @@
     </script>
 
 
+    <!-- SCRIPT për Story Popup -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const blogCards = document.querySelectorAll('.blog-card');
             const popup = document.getElementById('story-popup');
             const storyImage = document.getElementById('story-image');
+            const storyVideo = document.getElementById('story-video');
             const storyBars = document.getElementById('story-bars');
             const closeBtn = document.querySelector('.close-btn');
 
@@ -301,9 +303,7 @@
             let timer;
             let isPaused = false;
             let startY = 0;
-            let startTime = 0;
-            let elapsedTime = 0;
-            const animationDuration = 5000; // 5 sekonda për çdo story
+            const animationDuration = 5000; // 5 sekonda
 
             function openPopup(imgArray) {
                 images = imgArray;
@@ -316,23 +316,17 @@
             function closePopup() {
                 clearTimeout(timer);
                 const storyContent = popup.querySelector('.story-content');
-
-                // Heqim background-in e zi menjëherë
                 popup.style.background = 'transparent';
-
                 storyContent.classList.add('closing-animation');
-
                 storyContent.addEventListener('animationend', () => {
                     popup.style.display = 'none';
-                    popup.style.background = 'rgba(0, 0, 0, 0.8)'; // Rindreq background-in për herën tjetër
+                    popup.style.background = 'rgba(0, 0, 0, 0.8)';
                     storyContent.classList.remove('closing-animation');
                     currentImage = 0;
-                    elapsedTime = 0;
                 }, {
                     once: true
                 });
             }
-
 
             function renderBars() {
                 storyBars.innerHTML = '';
@@ -348,8 +342,6 @@
 
             function showImage(index) {
                 const fills = document.querySelectorAll('.story-bar-fill');
-                const storyImage = document.getElementById('story-image');
-                const storyVideo = document.getElementById('story-video');
                 const currentSrc = images[index];
 
                 fills.forEach((fill, i) => {
@@ -361,15 +353,13 @@
                     void fills[index].offsetWidth;
                 }
 
-                // Kontrollojmë nëse është video
                 if (currentSrc.endsWith('.mp4') || currentSrc.endsWith('.mov') || currentSrc.endsWith('.webm')) {
                     storyImage.style.display = 'none';
                     storyVideo.style.display = 'block';
                     storyVideo.src = currentSrc;
-                    storyVideo.load(); // Ringarkojmë videon
-
+                    storyVideo.load();
                     storyVideo.onloadedmetadata = () => {
-                        const videoDuration = storyVideo.duration * 1000; // sekonda -> milisekonda
+                        const videoDuration = storyVideo.duration * 1000;
                         fills[index].style.animation = `progressAnimation ${videoDuration / 1000}s linear forwards`;
                         fills[index].style.animationPlayState = 'running';
                         storyVideo.play();
@@ -379,32 +369,28 @@
                     storyVideo.pause();
                     storyVideo.style.display = 'none';
                     storyImage.style.display = 'block';
+                    storyImage.onload = () => {
+                        fills[index].style.animation = `progressAnimation ${animationDuration / 1000}s linear forwards`;
+                        fills[index].style.animationPlayState = 'running';
+                        startTimer(animationDuration);
+                    };
                     storyImage.src = currentSrc;
-
-                    fills[index].style.animation = `progressAnimation ${animationDuration / 1000}s linear forwards`;
-                    fills[index].style.animationPlayState = 'running';
-                    startTimer(animationDuration);
                 }
             }
 
-
-
             function startTimer(duration) {
-                startTime = Date.now();
                 clearTimeout(timer);
                 timer = setTimeout(() => {
                     currentImage++;
                     if (currentImage < images.length) {
-                        elapsedTime = 0;
                         showImage(currentImage);
                     } else {
                         closePopup();
                     }
-                }, duration - elapsedTime);
+                }, duration);
             }
 
-
-            blogCards.forEach(function(card) {
+            blogCards.forEach(card => {
                 card.addEventListener('click', function() {
                     const storiesData = card.getAttribute('data-stories');
                     if (storiesData) {
@@ -417,29 +403,25 @@
             closeBtn.addEventListener('click', closePopup);
 
             popup.addEventListener('click', (e) => {
+                if (isPaused) return;
+
                 const x = e.clientX;
                 const width = window.innerWidth;
-
-                if (isPaused) return; // Nëse është pause, mos vazhdo
 
                 clearTimeout(timer);
 
                 if (x < width / 2) {
-                    // Klikim majtas
+                    // Klik majtas - back
                     if (currentImage > 0) {
                         currentImage--;
-                        elapsedTime = 0;
                         showImage(currentImage);
                     } else {
-                        // Je në story të parë ➔ rifillim nga fillimi
-                        elapsedTime = 0;
                         showImage(currentImage);
                     }
                 } else {
-                    // Klikim djathtas
+                    // Klik djathtas - next
                     currentImage++;
                     if (currentImage < images.length) {
-                        elapsedTime = 0;
                         showImage(currentImage);
                     } else {
                         closePopup();
@@ -450,7 +432,6 @@
             popup.addEventListener('mousedown', () => {
                 if (!isPaused) {
                     isPaused = true;
-                    elapsedTime += Date.now() - startTime;
                     clearTimeout(timer);
                     const fills = document.querySelectorAll('.story-bar-fill');
                     if (fills[currentImage]) {
@@ -466,7 +447,7 @@
                     if (fills[currentImage]) {
                         fills[currentImage].style.animationPlayState = 'running';
                     }
-                    startTimer();
+                    startTimer(animationDuration);
                 }
             });
 
@@ -474,7 +455,6 @@
                 startY = e.touches[0].clientY;
                 if (!isPaused) {
                     isPaused = true;
-                    elapsedTime += Date.now() - startTime;
                     clearTimeout(timer);
                     const fills = document.querySelectorAll('.story-bar-fill');
                     if (fills[currentImage]) {
@@ -494,7 +474,7 @@
                         if (fills[currentImage]) {
                             fills[currentImage].style.animationPlayState = 'running';
                         }
-                        startTimer();
+                        startTimer(animationDuration);
                     }
                 }
             });
