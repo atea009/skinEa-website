@@ -333,15 +333,14 @@
                     void fills[index].offsetWidth;
                 }
 
-                // Kontrollojmë nëse është video
                 if (currentSrc.endsWith('.mp4') || currentSrc.endsWith('.mov') || currentSrc.endsWith('.webm')) {
                     storyImage.style.display = 'none';
                     storyVideo.style.display = 'block';
                     storyVideo.src = currentSrc;
-                    storyVideo.load(); // Ringarkojmë videon
+                    storyVideo.load();
 
                     storyVideo.onloadedmetadata = () => {
-                        const videoDuration = storyVideo.duration * 1000; // sekonda -> milisekonda
+                        const videoDuration = storyVideo.duration * 1000;
                         fills[index].style.animation = `progressAnimation ${videoDuration / 1000}s linear forwards`;
                         fills[index].style.animationPlayState = 'running';
                         storyVideo.play();
@@ -351,13 +350,16 @@
                     storyVideo.pause();
                     storyVideo.style.display = 'none';
                     storyImage.style.display = 'block';
-                    storyImage.src = currentSrc;
 
-                    fills[index].style.animation = `progressAnimation ${animationDuration / 1000}s linear forwards`;
-                    fills[index].style.animationPlayState = 'running';
-                    startTimer(animationDuration);
+                    storyImage.onload = () => {
+                        fills[index].style.animation = `progressAnimation ${animationDuration / 1000}s linear forwards`;
+                        fills[index].style.animationPlayState = 'running';
+                        startTimer(animationDuration);
+                    };
+                    storyImage.src = currentSrc;
                 }
             }
+
 
 
 
