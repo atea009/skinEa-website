@@ -33,6 +33,50 @@
                     <div class="time-container"></div>
                 </div>
             </section>
+
+            <!-- Seksioni Skin Cancer Awareness fillimisht i fshehur -->
+
+            <section class="skin-cancer-section" style="display: none; ">
+                <section class="horizontal-scroll-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Skin cancer awareness</h2>
+                    </div>
+
+                    <div class="horizontal-grid">
+                        <div class="blog-card" data-type="skin cancer" data-stories="icons/story1.jpg,icons/story2.jpg,icons/story7.mp4">
+                            <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                            <div class="blog-bottom">
+                                <p class="blog-title">Don't forget to use SPF</p>
+                            </div>
+                        </div>
+
+                        <div class="blog-card" data-type="skin cancer" data-stories="icons/story1.jpg,icons/story2.jpg,icons/story3.jpg">
+                            <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                            <div class="blog-bottom">
+                                <p class="blog-title">Check your moles regularly</p>
+                            </div>
+                        </div>
+
+                        <div class="blog-card" data-type="skin cancer">
+                            <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                            <div class="blog-bottom">
+                                <p class="blog-title">Don't forget to use SPF</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Popup për Stories -->
+                <div id="story-popup" class="story-popup">
+                    <div class="story-content">
+                        <div class="story-bars" id="story-bars"></div>
+                        <span class="close-btn">&times;</span>
+                        <img src="" alt="Story Image" class="story-image" id="story-image" />
+                        <video class="story-video" id="story-video" muted playsinline></video>
+                    </div>
+                </div>
+            </section>
+
         </main>
 
         <footer class="footer">
@@ -65,6 +109,7 @@
         </footer>
     </div>
 
+    <!-- SCRIPT për modelin dhe skanimin -->
     <script>
         const URL = "https://teachablemachine.withgoogle.com/models/Nzm7SqHut/";
         let model, labelContainer, maxPredictions;
@@ -78,8 +123,8 @@
         }
 
         function translateClassName(className) {
-            if (className === "Kancerogjene") return "Cancerous";
-            if (className === "Jo-Kancerogjene") return "Non-Cancerous";
+            if (className === "kancerogjene") return "Cancerous";
+            if (className === "jo-kancerogjene") return "Non-Cancerous";
             return className;
         }
 
@@ -91,17 +136,15 @@
 
             labelContainer.innerHTML = "";
 
-            // Gjej indeksin me probabilitetin më të lartë
             let maxIndex = 0;
             for (let i = 1; i < prediction.length; i++) {
                 if (prediction[i].probability > prediction[maxIndex].probability) {
                     maxIndex = i;
                 } else if (prediction[i].probability === prediction[maxIndex].probability) {
-                    maxIndex = i; // Në rast barazie, merr të dytin
+                    maxIndex = i;
                 }
             }
 
-            // Shfaq vetëm shiritin e duhur
             const bestPrediction = prediction[maxIndex];
             const percentage = (bestPrediction.probability * 100).toFixed(2);
 
@@ -117,6 +160,9 @@
             labelContainer.appendChild(progressBar);
 
             document.querySelector(".time-container").innerText = `Analysis Time: ${elapsedTime} ms`;
+
+            // Shfaq seksionin Skin Cancer Awareness
+            document.querySelector(".skin-cancer-section").style.display = "block";
         }
 
         function handleFile(file) {
@@ -156,6 +202,277 @@
 
         init();
     </script>
+
+
+    <script>
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        blogCards.forEach(card => {
+            const type = card.getAttribute('data-type');
+            const blogBottom = card.querySelector('.blog-bottom');
+
+            if (type && blogBottom) {
+                // Krijojmë badge-in
+                const badge = document.createElement('div');
+                badge.classList.add('blog-type');
+
+                // Krijojmë ikonën
+                const icon = document.createElement('img');
+                icon.classList.add('badge-icon');
+
+                // Krijojmë tekstin
+                const text = document.createElement('span');
+                text.classList.add('badge-text');
+
+                switch (type.trim().toLowerCase()) {
+                    case "skin cancer":
+                        badge.style.background = '#F3A5DA'; // rozë
+                        icon.src = "icons/cancer_ribbon.png"; // ikona për skin cancer
+                        text.textContent = "Awareness";
+                        break;
+
+                    case "skin care":
+                        badge.style.background = '#D1B1E0'; // lejla
+                        icon.src = "icons/skin_icon.png"; // ikona për skin care
+                        text.textContent = "Skin Care";
+                        break;
+
+                    case "e-books":
+                        badge.style.background = '#B3DFE1'; // kaltër
+                        icon.src = "icons/book_icon.png"; // ikona për e-books
+                        text.textContent = "E-Books";
+                        break;
+
+                    default:
+                        badge.style.background = '#cccccc';
+                        text.textContent = "Unknown";
+                }
+
+                // Bashkojmë ikonën dhe tekstin në badge
+                badge.appendChild(icon);
+                badge.appendChild(text);
+
+                // Futim badge-in përpara titullit
+                blogBottom.insertBefore(badge, blogBottom.querySelector('.blog-title'));
+            }
+        });
+    </script>
+
+
+    <!-- SCRIPT për Story Popup -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const blogCards = document.querySelectorAll('.blog-card');
+            const popup = document.getElementById('story-popup');
+            const storyImage = document.getElementById('story-image');
+            const storyBars = document.getElementById('story-bars');
+            const closeBtn = document.querySelector('.close-btn');
+
+            let images = [];
+            let currentImage = 0;
+            let timer;
+            let isPaused = false;
+            let startY = 0;
+            let startTime = 0;
+            let elapsedTime = 0;
+            const animationDuration = 5000; // 5 sekonda për çdo story
+
+            function openPopup(imgArray) {
+                images = imgArray;
+                currentImage = 0;
+                popup.style.display = 'flex';
+                renderBars();
+                showImage(currentImage);
+            }
+
+            function closePopup() {
+                clearTimeout(timer);
+                const storyContent = popup.querySelector('.story-content');
+
+                // Heqim background-in e zi menjëherë
+                popup.style.background = 'transparent';
+
+                storyContent.classList.add('closing-animation');
+
+                storyContent.addEventListener('animationend', () => {
+                    popup.style.display = 'none';
+                    popup.style.background = 'rgba(0, 0, 0, 0.8)'; // Rindreq background-in për herën tjetër
+                    storyContent.classList.remove('closing-animation');
+                    currentImage = 0;
+                    elapsedTime = 0;
+                }, {
+                    once: true
+                });
+            }
+
+
+            function renderBars() {
+                storyBars.innerHTML = '';
+                images.forEach(() => {
+                    const bar = document.createElement('div');
+                    bar.className = 'story-bar';
+                    const fill = document.createElement('div');
+                    fill.className = 'story-bar-fill';
+                    bar.appendChild(fill);
+                    storyBars.appendChild(bar);
+                });
+            }
+
+            function showImage(index) {
+                const fills = document.querySelectorAll('.story-bar-fill');
+                const storyImage = document.getElementById('story-image');
+                const storyVideo = document.getElementById('story-video');
+                const currentSrc = images[index];
+
+                fills.forEach((fill, i) => {
+                    fill.style.width = i < index ? '100%' : '0';
+                    fill.style.animation = 'none';
+                });
+
+                if (fills[index]) {
+                    void fills[index].offsetWidth;
+                }
+
+                // Kontrollojmë nëse është video
+                if (currentSrc.endsWith('.mp4') || currentSrc.endsWith('.mov') || currentSrc.endsWith('.webm')) {
+                    storyImage.style.display = 'none';
+                    storyVideo.style.display = 'block';
+                    storyVideo.src = currentSrc;
+                    storyVideo.load(); // Ringarkojmë videon
+
+                    storyVideo.onloadedmetadata = () => {
+                        const videoDuration = storyVideo.duration * 1000; // sekonda -> milisekonda
+                        fills[index].style.animation = `progressAnimation ${videoDuration / 1000}s linear forwards`;
+                        fills[index].style.animationPlayState = 'running';
+                        storyVideo.play();
+                        startTimer(videoDuration);
+                    };
+                } else {
+                    storyVideo.pause();
+                    storyVideo.style.display = 'none';
+                    storyImage.style.display = 'block';
+                    storyImage.src = currentSrc;
+
+                    fills[index].style.animation = `progressAnimation ${animationDuration / 1000}s linear forwards`;
+                    fills[index].style.animationPlayState = 'running';
+                    startTimer(animationDuration);
+                }
+            }
+
+
+
+            function startTimer(duration) {
+                startTime = Date.now();
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    currentImage++;
+                    if (currentImage < images.length) {
+                        elapsedTime = 0;
+                        showImage(currentImage);
+                    } else {
+                        closePopup();
+                    }
+                }, duration - elapsedTime);
+            }
+
+
+            blogCards.forEach(function(card) {
+                card.addEventListener('click', function() {
+                    const storiesData = card.getAttribute('data-stories');
+                    if (storiesData) {
+                        const storiesArray = storiesData.split(',').map(s => s.trim());
+                        openPopup(storiesArray);
+                    }
+                });
+            });
+
+            closeBtn.addEventListener('click', closePopup);
+
+            popup.addEventListener('click', (e) => {
+                const x = e.clientX;
+                const width = window.innerWidth;
+
+                if (isPaused) return; // Nëse është pause, mos vazhdo
+
+                clearTimeout(timer);
+
+                if (x < width / 2) {
+                    // Klikim majtas
+                    if (currentImage > 0) {
+                        currentImage--;
+                        elapsedTime = 0;
+                        showImage(currentImage);
+                    } else {
+                        // Je në story të parë ➔ rifillim nga fillimi
+                        elapsedTime = 0;
+                        showImage(currentImage);
+                    }
+                } else {
+                    // Klikim djathtas
+                    currentImage++;
+                    if (currentImage < images.length) {
+                        elapsedTime = 0;
+                        showImage(currentImage);
+                    } else {
+                        closePopup();
+                    }
+                }
+            });
+
+            popup.addEventListener('mousedown', () => {
+                if (!isPaused) {
+                    isPaused = true;
+                    elapsedTime += Date.now() - startTime;
+                    clearTimeout(timer);
+                    const fills = document.querySelectorAll('.story-bar-fill');
+                    if (fills[currentImage]) {
+                        fills[currentImage].style.animationPlayState = 'paused';
+                    }
+                }
+            });
+
+            popup.addEventListener('mouseup', () => {
+                if (isPaused) {
+                    isPaused = false;
+                    const fills = document.querySelectorAll('.story-bar-fill');
+                    if (fills[currentImage]) {
+                        fills[currentImage].style.animationPlayState = 'running';
+                    }
+                    startTimer();
+                }
+            });
+
+            popup.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+                if (!isPaused) {
+                    isPaused = true;
+                    elapsedTime += Date.now() - startTime;
+                    clearTimeout(timer);
+                    const fills = document.querySelectorAll('.story-bar-fill');
+                    if (fills[currentImage]) {
+                        fills[currentImage].style.animationPlayState = 'paused';
+                    }
+                }
+            });
+
+            popup.addEventListener('touchend', (e) => {
+                const endY = e.changedTouches[0].clientY;
+                if (endY - startY > 100) {
+                    closePopup();
+                } else {
+                    if (isPaused) {
+                        isPaused = false;
+                        const fills = document.querySelectorAll('.story-bar-fill');
+                        if (fills[currentImage]) {
+                            fills[currentImage].style.animationPlayState = 'running';
+                        }
+                        startTimer();
+                    }
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
