@@ -306,7 +306,8 @@ footer {
     box-sizing: border-box;
 } */
 
-.product-card {
+
+/* .product-card {
     flex: 0 0 auto;
     background: white;
     border-radius: 14px;
@@ -320,7 +321,7 @@ footer {
     align-items: center;
     box-sizing: border-box;
     position: relative;
-}
+} */
 
 .card-top {
     position: relative;
@@ -1233,10 +1234,27 @@ footer {
 /* PËR EKRANE SHUMË TË VEGJËL: një kartë në qendër që zmadhohet */
 
 .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 20px;
-    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 8px;
     box-sizing: border-box;
-    justify-items: center;
+}
+
+.product-card {
+    flex: 0 0 auto;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    width: 170px;
+    height: auto;
+    border: 1.5px solid #F0F0F0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
 }
