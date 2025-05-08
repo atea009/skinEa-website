@@ -372,66 +372,6 @@
 
 
 
-    <script>
-        function adjustProductGrid() {
-            const grid = document.querySelector('.products-grid');
-            const cards = document.querySelectorAll('.product-card');
-
-            const gridWidth = grid.clientWidth;
-
-            let cardsPerRow = 1;
-            let padding = 8;
-            let gap = 8;
-            let cardWidth = 170; // width minimale për kartë
-
-            if (gridWidth >= 1110) {
-                cardsPerRow = 6;
-            } else if (gridWidth >= 900) {
-                cardsPerRow = 5;
-            } else if (gridWidth >= 723) {
-                cardsPerRow = 4;
-            } else if (gridWidth >= 549) {
-                cardsPerRow = 3;
-            } else if (gridWidth >= 368) {
-                cardsPerRow = 2;
-            } else {
-                cardsPerRow = 1;
-            }
-
-            // Sa hapësirë kemi për të llogaritur gap-in dhe padding-in
-            const totalGap = (cardsPerRow - 1) * gap;
-            const totalMinWidth = (cardsPerRow * cardWidth) + totalGap;
-
-            let availableSpace = gridWidth - totalMinWidth;
-
-            if (availableSpace > 0) {
-                let extraSpacePerSide = availableSpace / (cardsPerRow + 1);
-
-                // kontrollojme qe gap dhe padding te mos kalojne limitet
-                if (extraSpacePerSide > 20) extraSpacePerSide = 20;
-                if (extraSpacePerSide < 8) extraSpacePerSide = 8;
-
-                gap = extraSpacePerSide;
-                padding = extraSpacePerSide;
-            }
-
-            const finalTotalGaps = (cardsPerRow - 1) * gap;
-            const finalAvailableWidth = gridWidth - (2 * padding) - finalTotalGaps;
-            const finalCardWidth = finalAvailableWidth / cardsPerRow;
-
-            // vendos stilet
-            grid.style.paddingLeft = `${padding}px`;
-            grid.style.paddingRight = `${padding}px`;
-            grid.style.gap = `${gap}px`;
-
-            cards.forEach(card => {
-                card.style.width = `${finalCardWidth}px`;
-            });
-        }
-
-        window.addEventListener('resize', adjustProductGrid);
-        window.addEventListener('load', adjustProductGrid);
-    </script>
 
 
 

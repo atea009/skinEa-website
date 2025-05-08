@@ -392,64 +392,7 @@
     </script>
 
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            function adjustGridLayout() {
-                const grid = document.querySelector('.products-grid');
-                const cards = document.querySelectorAll('.products-grid .product-card');
 
-                if (window.innerWidth <= 364) {
-                    // Telefona shumë të vegjël: një kartë e madhe në mes
-                    grid.style.display = 'flex';
-                    grid.style.flexWrap = 'wrap';
-                    grid.style.justifyContent = 'center';
-                    grid.style.alignItems = 'flex-start';
-                    grid.style.gap = '15px';
-                    grid.style.padding = '0 10px';
-
-                    cards.forEach(card => {
-                        card.style.width = '80%';
-                        card.style.maxWidth = '300px';
-                        card.style.minWidth = '200px';
-                    });
-
-                } else if (window.innerWidth >= 365 && window.innerWidth <= 530) {
-                    // Telefona normalë: dy karta në një rresht
-                    grid.style.display = 'grid';
-                    grid.style.gridTemplateColumns = 'repeat(2, minmax(170px, 1fr))';
-                    grid.style.placeContent = 'center';
-                    grid.style.gap = '10px';
-                    grid.style.padding = '0 10px';
-
-                    cards.forEach(card => {
-                        card.style.width = '100%';
-                        card.style.maxWidth = '250px';
-                        card.style.minWidth = '170px';
-                    });
-
-                } else {
-                    // Ekran më i madh: shumë karta normale 170px
-                    grid.style.display = 'grid';
-                    grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(170px, 1fr))';
-                    grid.style.gap = '20px';
-                    grid.style.padding = '0 20px';
-                    grid.style.justifyItems = 'center';
-
-                    cards.forEach(card => {
-                        card.style.width = '170px';
-                        card.style.maxWidth = '';
-                        card.style.minWidth = '';
-                    });
-                }
-            }
-
-            // Thirre njëherë kur hap faqen
-            adjustGridLayout();
-
-            // Dhe sa herë ndryshon madhësia e ekranit
-            window.addEventListener('resize', adjustGridLayout);
-        });
-    </script>
 
 </body>
 
