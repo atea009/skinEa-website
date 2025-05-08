@@ -409,6 +409,14 @@ footer {
     background: #A9D8BE;
 }
 
+.skin-dry-combo {
+    background: #81dac7;
+}
+
+.skin-oily-combo {
+    background: #b8e993;
+}
+
 .brand-name {
     font-size: 12px;
     font-family: "Calibri", sans-serif;

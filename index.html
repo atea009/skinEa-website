@@ -135,7 +135,22 @@
                         </div>
 
                         <div class="card-bottom">
-                            <span class="skin-type" data-skin="Combination skin"></span>
+                            <span class="skin-type" data-skin="Dry/Combo skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Oily/Combo skin"></span>
                             <p class="brand-name">Product Brand</p>
                             <p class="product-name">Product Name</p>
                         </div>
@@ -337,6 +352,14 @@
                     case "combination skin":
                         el.classList.add('skin-combination');
                         el.textContent = "Combination skin";
+                        break;
+                    case "dry/combo skin":
+                        el.classList.add('skin-dry-combo');
+                        el.textContent = "Dry/Combo skin";
+                        break;
+                    case "oily/combo skin":
+                        el.classList.add('skin-oily-combo');
+                        el.textContent = "Oily/Combo skin";
                         break;
                     default:
                         el.style.display = "none"; // fsheh nëse nuk ka kategori të saktë
