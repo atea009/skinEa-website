@@ -20,18 +20,20 @@
             </div>
         </header>
 
-        <section class="scan-section">
-            <div class="scan-container">
-                <div class="drop-area">
-                    <img src="https://cdn-icons-png.flaticon.com/512/109/109612.png" alt="Upload Icon">
-                    <p>Drag & Drop ose Kliko për të ngarkuar një foto</p>
-                    <input type="file" id="imageUpload" accept="image/*" hidden>
+        <main>
+            <section class="scan-section">
+                <div class="scan-container">
+                    <div class="drop-area">
+                        <img src="https://cdn-icons-png.flaticon.com/512/109/109612.png" alt="Upload Icon">
+                        <p>Click or Drag & Drop to Upload Your Photo</p>
+                        <input type="file" id="imageUpload" accept="image/*" hidden>
+                    </div>
+                    <div class="image-container"></div>
+                    <div class="label-container"></div>
+                    <div class="time-container"></div>
                 </div>
-                <div class="image-container"></div>
-                <div class="label-container"></div>
-                <div class="time-container"></div>
-            </div>
-        </section>
+            </section>
+        </main>
 
         <footer class="footer">
             <div class="footer-nav">
@@ -75,6 +77,12 @@
             labelContainer = document.querySelector(".label-container");
         }
 
+        function translateClassName(className) {
+            if (className === "Kancerogjene") return "Cancerous";
+            if (className === "Jo-Kancerogjene") return "Non-Cancerous";
+            return className;
+        }
+
         async function predict(imageElement) {
             const startTime = performance.now();
             const prediction = await model.predict(imageElement);
@@ -82,21 +90,33 @@
             const elapsedTime = (endTime - startTime).toFixed(2);
 
             labelContainer.innerHTML = "";
-            prediction.forEach(pred => {
-                const percentage = (pred.probability * 100).toFixed(2);
-                const progressBar = document.createElement("div");
-                progressBar.className = "progress-bar";
 
-                const progress = document.createElement("div");
-                progress.className = "progress " + (percentage > 50 ? "pink-bar" : "orange-bar");
-                progress.style.width = percentage + "%";
-                progress.innerText = `${pred.className}: ${percentage}%`;
+            // Gjej indeksin me probabilitetin më të lartë
+            let maxIndex = 0;
+            for (let i = 1; i < prediction.length; i++) {
+                if (prediction[i].probability > prediction[maxIndex].probability) {
+                    maxIndex = i;
+                } else if (prediction[i].probability === prediction[maxIndex].probability) {
+                    maxIndex = i; // Në rast barazie, merr të dytin
+                }
+            }
 
-                progressBar.appendChild(progress);
-                labelContainer.appendChild(progressBar);
-            });
+            // Shfaq vetëm shiritin e duhur
+            const bestPrediction = prediction[maxIndex];
+            const percentage = (bestPrediction.probability * 100).toFixed(2);
 
-            document.querySelector(".time-container").innerText = `Koha e analizës: ${elapsedTime} ms`;
+            const progressBar = document.createElement("div");
+            progressBar.className = "progress-bar";
+
+            const progress = document.createElement("div");
+            progress.className = "progress " + (percentage > 50 ? "pink-bar" : "orange-bar");
+            progress.style.width = percentage + "%";
+            progress.innerText = `${translateClassName(bestPrediction.className)}: ${percentage}%`;
+
+            progressBar.appendChild(progress);
+            labelContainer.appendChild(progressBar);
+
+            document.querySelector(".time-container").innerText = `Analysis Time: ${elapsedTime} ms`;
         }
 
         function handleFile(file) {
