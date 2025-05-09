@@ -80,6 +80,7 @@
         @media (max-width: 550px) {
             .widget-cards-section {
                 padding: 20px 10px;
+                padding-bottom: 8px;
             }
         }
         
