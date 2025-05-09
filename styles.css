@@ -65,7 +65,6 @@
             pointer-events: auto;
         }
         /* 🧩 HOME PAGE WIDGETS */
-        /* HOME PAGE WIDGETS */
         
         .widget-cards-section {
             display: flex;
@@ -116,6 +115,13 @@
             position: relative;
             display: flex;
             align-items: flex-end;
+            transition: transform 0.1s ease;
+            /* animacion i butë */
+        }
+        
+        .widget-card:active {
+            transform: scale(0.96);
+            /* zvogëlim i lehtë pa prishur layout-in */
         }
         
         .widget-card img,
