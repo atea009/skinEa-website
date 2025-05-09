@@ -24,7 +24,7 @@
         <div class="settings-popup-overlay" id="settingsPopupOverlay"></div>
 
         <div class="settings-popup" id="settingsPopup">
-            <img src="icons/back.png" alt="Back" class="popup-back" id="settingsCloseBtn" />
+            <img src="icons/back1.png" alt="Back" class="popup-back" id="settingsCloseBtn" />
             <div class="popup-content">
                 <h2>Settings</h2>
                 <p>Opsionet e përdoruesit...</p>
@@ -183,18 +183,18 @@
         const settingsOverlay = document.getElementById('settingsPopupOverlay');
         const settingsCloseBtn = document.getElementById('settingsCloseBtn');
 
-        // Hap popup me rrëshqitje
+        // Hap popup me rrëshqitje nga poshtë lart
         function openSettingsPopup() {
-            settingsPopup.style.transform = 'translateX(0)';
+            settingsPopup.style.transform = 'translateY(0)';
             settingsOverlay.style.display = 'block';
         }
 
-        // Mbyll popup me rrëshqitje
+        // Mbyll popup me rrëshqitje nga lart poshtë
         function closeSettingsPopup() {
-            settingsPopup.style.transform = 'translateX(100%)';
+            settingsPopup.style.transform = 'translateY(100%)';
             setTimeout(() => {
                 settingsOverlay.style.display = 'none';
-            }, 700); // e njëjta kohë si CSS (0.7s)
+            }, 700);
         }
 
         // Klikime
@@ -202,23 +202,23 @@
         settingsCloseBtn.addEventListener('click', closeSettingsPopup);
         settingsOverlay.addEventListener('click', closeSettingsPopup);
 
-        // Swipe për mbyllje
-        let startX = 0;
-        let currentX = 0;
+        // Swipe nga lart poshtë për mbyllje
+        let startY = 0;
+        let currentY = 0;
         let isSwiping = false;
 
         settingsPopup.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
             isSwiping = true;
             settingsPopup.style.transition = 'none';
         });
 
         settingsPopup.addEventListener('touchmove', (e) => {
             if (!isSwiping) return;
-            currentX = e.touches[0].clientX;
-            const diffX = currentX - startX;
-            if (diffX > 0) {
-                settingsPopup.style.transform = `translateX(${diffX}px)`;
+            currentY = e.touches[0].clientY;
+            const diffY = currentY - startY;
+            if (diffY > 0) {
+                settingsPopup.style.transform = `translateY(${diffY}px)`;
             }
         });
 
@@ -226,13 +226,13 @@
             if (!isSwiping) return;
             isSwiping = false;
 
-            const diffX = currentX - startX;
+            const diffY = currentY - startY;
             settingsPopup.style.transition = 'transform 0.7s ease-in-out';
 
-            if (diffX > 100) {
+            if (diffY > 100) {
                 closeSettingsPopup();
             } else {
-                settingsPopup.style.transform = 'translateX(0)';
+                settingsPopup.style.transform = 'translateY(0)';
             }
         });
     </script>

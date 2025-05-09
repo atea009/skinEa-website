@@ -82,55 +82,23 @@
         display: none;
         z-index: 999;
     }
-    /* Popup Panel */
+    /* Popup Panel - gjithmonë nga poshtë lart */
     
     .settings-popup {
         position: fixed;
-        top: 0;
+        bottom: 0;
+        left: 0;
         right: 0;
-        /* Mbaj right: 0 për vendndodhje, por animacioni bëhet me transform */
+        width: 100%;
         height: 100%;
         background: white;
-        /* box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2); */
         z-index: 999;
-        transition: transform 0.1s ease-in-out;
-        transform: translateX(100%);
-        /* Fillimisht jashtë ekranit */
+        transform: translateY(100%);
+        transition: transform 0.7s ease-in-out;
         display: flex;
         flex-direction: column;
         padding: 20px;
-    }
-    /* Popup Width */
-    
-    @media (max-width: 480px) {
-        .settings-popup {
-            width: 100%;
-        }
-    }
-    
-    @media (min-width: 481px) {
-        .settings-popup {
-            position: fixed;
-            /* del jashtë app-container */
-            top: 0;
-            right: 0;
-            width: 400px;
-            height: 100vh;
-            /* zgjatet sa ekrani */
-            background: white;
-            transform: translateX(100%);
-            /* fillimisht i mbyllur */
-            transition: transform 0.7s ease-in-out;
-            z-index: 999;
-        }
-        /* kur JS e hap me transform: translateX(0) */
-        .settings-popup[style*="translateX(0)"] {
-            transform: translateX(0);
-        }
-        /* kur është i mbyllur */
-        .settings-popup[style*="translateX(100%)"] {
-            pointer-events: none;
-        }
+        border-radius: 14px 14px 0 0;
     }
     /* Back Button */
     
