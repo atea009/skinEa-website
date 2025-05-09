@@ -194,7 +194,7 @@
     }
     
     .logout-btn {
-        background: linear-gradient(135deg, #efa5fc, #f871c0);
+        background: linear-gradient(135deg, #efb2fa, #f793cd);
         color: white;
         font-size: 18px;
         font-weight: bold;
@@ -206,7 +206,7 @@
     }
     
     .logout-btn:hover {
-        background: linear-gradient(135deg, #f871cd, #ef44bf);
+        background: linear-gradient(135deg, #fa8bd7, #ef70cb);
     }
     /* 🧩 HOME PAGE WIDGETS */
     
