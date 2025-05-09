@@ -32,38 +32,97 @@
             <div class="popup-scroll-area">
 
                 <!-- My Details veç -->
-                <div class="popup-option standalone">
+
+                <div class="popup-option standalone" id="detailsToggle">
                     <img src="icons/user.png" />
                     <span>My Details</span>
                 </div>
+                <div class="details-dropdown" id="detailsDropdown">
+                    <!-- Përmbajtja e xhepit -->
+                    <p class="detail-line">Username: Atea</p>
+                    <p class="detail-line">Email: skin@example.com</p>
+                    <div class="detail-group">
+                        <div class="detail-row">
+                            <span class="detail-label">Gender</span>
+                            <select class="detail-select">
+                            <option>Female</option>
+                            <option>Male</option>
+                            <option>Other</option>
+                          </select>
+                        </div>
 
-                <!-- Grupi i tjerëve -->
+                        <div class="detail-row">
+                            <span class="detail-label">Birthyear</span>
+                            <input type="date" class="detail-input" />
+                        </div>
+                    </div>
+                    <div class="skin-section">
+                        <p class="detail-label">Skin Color</p>
+                        <div class="skincolor-grid">
+                            <div class="skincolor color-1 "></div>
+                            <div class="skincolor color-2"></div>
+                            <div class="skincolor color-3 selected"></div>
+                            <div class="skincolor color-4"></div>
+                            <div class="skincolor color-5"></div>
+                            <div class="skincolor color-6"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="skin-section">
+                        <p class="detail-label">Skin Type</p>
+                        <div class="skin-types">
+                            <button class="skin-btn selected">Normal</button>
+                            <button class="skin-btn ">Combined</button>
+                            <button class="skin-btn">Oily</button>
+                            <button class="skin-btn">Dry</button>
+                        </div>
+                    </div>
+
+                    <div class="skin-section">
+                        <p class="detail-label">Skin Issue</p>
+                        <div class="issue-tags">
+                            <button class="issue-btn">Acne</button>
+                            <button class="issue-btn">Redness</button>
+                            <button class="issue-btn">Wrinkles/ Fine lines</button>
+                            <button class="issue-btn">Large pores</button>
+                            <button class="issue-btn">Sensitivity</button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Grupi tjeter -->
                 <div class="options-group">
 
-                    <div class="popup-option">
+                    <a class="popup-option" href="howtouse.html">
                         <img src="icons/info.png" />
                         <span>How to Use</span>
-                    </div>
-                    <div class="popup-option">
+                    </a>
+                    <a class="popup-option" href="guide.html">
                         <img src="icons/question.png" />
                         <span>SkinEa Guide</span>
-                    </div>
-                    <div class="popup-option">
+                    </a>
+                    <a class="popup-option" href="privacy.html">
                         <img src="icons/policy.png" />
                         <span>Privacy Policy</span>
-                    </div>
-                    <div class="popup-option">
+                    </a>
+                    <a class="popup-option" href="terms.html">
                         <img src="icons/terms.png" />
                         <span>Terms of Use</span>
-                    </div>
-                    <div class="popup-option">
+                    </a>
+
+                    <div class="popup-option" id="shareAppBtn">
                         <img src="icons/share.png" />
                         <span>Share App</span>
                     </div>
-                    <div class="popup-option">
+
+                    <a href="mailto:skineaapp@gmail.com" class="popup-option">
                         <img src="icons/email.png" />
                         <span>Contact Us</span>
-                    </div>
+                    </a>
+
                     <div class="popup-option">
                         <img src="icons/star.png" />
                         <span>Rate Us</span>
@@ -366,6 +425,7 @@
         </footer>
 
     </div>
+
     <script>
         const settingsIcon = document.querySelector('.settings-icon');
         const settingsPopup = document.getElementById('settingsPopup');
@@ -427,6 +487,63 @@
     </script>
 
 
+    <script>
+        const detailsToggle = document.getElementById('detailsToggle');
+        const detailsDropdown = document.getElementById('detailsDropdown');
+
+        detailsToggle.addEventListener('click', () => {
+            if (detailsDropdown.style.display === 'block') {
+                detailsDropdown.style.display = 'none';
+            } else {
+                detailsDropdown.style.display = 'block';
+            }
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll('.skincolor').forEach(circle => {
+            circle.addEventListener('click', () => {
+                document.querySelectorAll('.skincolor').forEach(c => c.classList.remove('selected'));
+                circle.classList.add('selected');
+            });
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll('.skin-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.skin-btn').forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+            });
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll('.issue-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('selected');
+            });
+        });
+    </script>
+
+    <script>
+        const shareBtn = document.getElementById('shareAppBtn');
+        shareBtn.addEventListener('click', async() => {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'SkinEa App',
+                        text: 'Check out this skincare assistant app!',
+                        url: 'https://skinea.netlify.app/'
+                    });
+                } catch (err) {
+                    console.error('Sharing failed:', err);
+                }
+            } else {
+                alert('Sharing not supported on this device/browser.');
+            }
+        });
+    </script>
 
 
 

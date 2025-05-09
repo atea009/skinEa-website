@@ -127,8 +127,8 @@
     }
     
     .popup-back {
-        width: 18px;
-        height: 18px;
+        width: 15px;
+        height: 15px;
         cursor: pointer;
     }
     
@@ -153,6 +153,7 @@
         font-size: 16px;
         font-weight: 600;
         color: #292D32;
+        text-decoration: none;
     }
     
     .popup-option img {
@@ -185,6 +186,165 @@
         gap: 12px;
         padding: 12px;
         box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.03);
+    }
+    
+    .details-dropdown {
+        display: none;
+        background: #ffffff;
+        border-bottom-left-radius: 14px;
+        border-bottom-right-radius: 14px;
+        padding: 0px 20px;
+        box-shadow: 0px 8px 12px -4px rgba(0, 0, 0, 0.1);
+        /* vetem poshte dhe anash */
+        margin-top: -33px;
+        animation: fadeSlide 0.3s ease;
+    }
+    
+    @keyframes fadeSlide {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .detail-line {
+        font-size: 18px;
+        font-weight: bold;
+        color: #F3A5DA;
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    
+    .detail-group {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+    
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .detail-label {
+        font-weight: bold;
+        color: #292d32;
+    }
+    
+    .detail-select,
+    .detail-input {
+        border: none;
+        background: transparent;
+        font-weight: bold;
+        color: #F3A5DA;
+        font-size: 16px;
+    }
+    
+    .skin-section {
+        padding: 0 16px 16px;
+    }
+    
+    .skin-types {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    
+    .skin-btn {
+        padding: 10px 16px;
+        border-radius: 20px;
+        border: 1.5px solid #ccc;
+        background: #fff;
+        color: #292d32;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+    }
+    
+    .skin-btn.selected {
+        background: #f3a5da;
+        border-color: #f3a5da;
+        color: #fff;
+        box-shadow: 0 0 0 3px #f3a5da33;
+    }
+    
+    .skincolor-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 10px;
+    }
+    
+    .skincolor {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: border 0.3s ease, box-shadow 0.2s ease;
+    }
+    
+    .skincolor.selected {
+        border: 2.5px solid #f3a5da;
+        box-shadow: 0 0 0 3px #f3a5da33;
+    }
+    /* Ngjyra për çdo rreth */
+    
+    .color-1 {
+        background: #fce9d6;
+    }
+    
+    .color-2 {
+        background: #f5d3b3;
+    }
+    
+    .color-3 {
+        background: #ddb78d;
+    }
+    
+    .color-4 {
+        background: #a3724e;
+    }
+    
+    .color-5 {
+        background: #704b30;
+    }
+    
+    .color-6 {
+        background: #3e2a1c;
+    }
+    
+    .issue-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+        padding-bottom: 16px;
+    }
+    
+    .issue-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        border-radius: 20px;
+        border: 1.5px solid #ccc;
+        background: #fff;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+    
+    .issue-btn.selected {
+        background: #f3a5da;
+        color: white;
+        border-color: #f3a5da;
     }
     
     .logout-container {
