@@ -6,23 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkinEa Splash</title>
     <link rel="stylesheet" href="styles.css" />
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            setTimeout(() => {
-                document.body.classList.add("fade-out");
-                setTimeout(() => {
-                    window.location.href = "home.html";
-                }, 1000); // jep kohë që të kryhet animacioni (1s)
-            }, 3000);
-        });
-    </script>
-
 </head>
 
 <body class="index-page">
-    <div class="logo-box">
+    <div class="logo-box" id="fadeBox">
         <img src="icons/SkinEa.png" alt="SkinEa Logo" class="logo fade-reveal" />
     </div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const fadeBox = document.getElementById("fadeBox");
+            if (!fadeBox) return;
+
+            setTimeout(() => {
+                fadeBox.classList.add("fade-out");
+                setTimeout(() => {
+                    window.location.href = "home.html";
+                }, 1000);
+            }, 3000);
+        });
+    </script>
 </body>
 
 </html>
