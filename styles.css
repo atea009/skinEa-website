@@ -999,10 +999,6 @@
     }
     /* vetem per seksionet horizontale html */
     
-    .scan-section {
-        margin-top: 120px;
-    }
-    
     .horizontal-scroll-section {
         display: flex;
         flex-direction: column;
@@ -1251,13 +1247,36 @@
     }
     /* SCAN PAGE SPECIAL STYLES */
     
+    .scan-section {
+        margin-top: 100px;
+        position: relative;
+        padding-top: 30px;
+        /* pak hapsirë për ikonën sipër */
+    }
+    
     .scan-title {
         color: #ff6b81;
     }
     
-    .scan-container {
+    .info-icon-container {
         max-width: 400px;
-        margin: 20px auto;
+        margin: 0 auto 10px auto;
+        /* pozicionuar lart, me hapësirë poshtë */
+        padding: 0 20px;
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    .info-icon-container img {
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+    }
+    
+    .scan-container {
+        /* shumë e rëndësishme */
+        max-width: 400px;
+        margin: 10px auto;
         background: white;
         padding: 20px;
         border-radius: 10px;
