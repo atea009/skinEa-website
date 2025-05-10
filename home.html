@@ -2,16 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkinEa</title>
-
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 
 <body>
+
     <div class="app-container">
         <header class="header">
             <div class="top-bar">
@@ -138,73 +136,264 @@
         </div>
 
 
+
+
+
+
+
+        <section class="widget-cards-section">
+            <a href="scan.html" class="widget-card large-widget scan-bg">
+                <div class="widget-content">
+                    <img src="icons/scan.png" alt="Scan Icon" class="widget-icon-png" />
+                    <span class="widget-label">Skin Scan</span>
+                </div>
+            </a>
+
+            <div class="small-widgets-row">
+                <a href="aichat.html" class="widget-card small-widget ai-bg">
+                    <div class="widget-content">
+                        <img src="icons/Ai_icon.png" alt="AI Icon" class="widget-icon-png" />
+                        <span class="widget-label">AI Assistant</span>
+                    </div>
+                </a>
+
+                <a href="myroutine.html" class="widget-card small-widget routine-bg">
+                    <div class="widget-content">
+                        <img src="icons/heart.png" alt="Routine Icon" class="widget-icon-png" />
+                        <span class="widget-label">My Routine</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+
+
+
+
+
         <main>
 
-            <section class="scan-section">
+            <section class="horizontal-scroll-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recommended products</h2>
+                    <a href="products.html" class="view-all-link">View all</a>
+                </div>
 
-                <div class="info-icon-container">
-                    <a href="info.html">
-                        <img src="icons/info.png" alt="Info Icon" />
-                    </a>
+                <div class="horizontal-grid">
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="All skin types"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Normal skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Dry skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Oily skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Combination skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Dry/Combo skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-top">
+                            <img src="icons/prod_image.png" alt="Product Image" class="product-photo" />
+                            <button class="wishlist-container" data-active="false">
+                                <img src="icons/heart.png" alt="Wishlist" class="wishlist-icon" />
+                            </button>
+                        </div>
+
+                        <div class="card-bottom">
+                            <span class="skin-type" data-skin="Oily/Combo skin"></span>
+                            <p class="brand-name">Product Brand</p>
+                            <p class="product-name">Product Name</p>
+                        </div>
+                    </div>
+
                 </div>
 
 
-                <div class="scan-container">
-                    <div class="drop-area">
-                        <img src="https://cdn-icons-png.flaticon.com/512/109/109612.png" alt="Upload Icon">
-                        <p>Click or Drag & Drop to Upload Your Photo</p>
-                        <input type="file" id="imageUpload" accept="image/*" hidden>
+                <div class="popup-overlay" id="popupOverlay">
+                    <div class="product-popup" id="productPopup">
+                        <div class="product-popup-content">
+                            <div class="popup-indicator"></div>
+
+                            <div class="popup-product">
+                                <div class="popup-image-container">
+                                    <img src="icons/prod_image.png" alt="Product Image" class="popup-product-photo" />
+                                    <div class="wishlist-container-popup">
+                                        <img src="icons/heart.png" alt="Wishlist" class="popup-wishlist-icon" />
+                                    </div>
+                                </div>
+                                <div class="popup-product-name">
+                                    <p class="popup-brand-name">Product Brand</p>
+                                    <p class="popup-product-name-bold">Product Name Name</p>
+                                </div>
+                                <button class="buy-button">Buy Now</button>
+                            </div>
+
+
+                            <div class="popup-section">
+                                <h2>How to use product</h2>
+                                <p class="popup-text">
+                                    For combination skin with sensitivity, gently apply the toner using a cotton pad, focusing on areas prone to redness and irritation...
+                                </p>
+                            </div>
+
+                            <div class="popup-section">
+                                <h2>Ingredients</h2>
+                                <p class="popup-text">
+                                    Water, Hydrogenated Hydrolysate Starch, Sodium Pca, Allantoin, Phenoxyethanol, Disodium Edta...
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="image-container"></div>
-                    <div class="label-container"></div>
-                    <div class="time-container"></div>
                 </div>
             </section>
 
-            <!-- Seksioni Skin Cancer Awareness fillimisht i fshehur -->
 
-            <section class="skin-cancer-section" style="display: none; ">
-                <section class="horizontal-scroll-section">
-                    <div class="section-header">
-                        <h2 class="section-title">Skin cancer awareness</h2>
-                    </div>
+            <section class="horizontal-scroll-section">
+                <div class="section-header">
+                    <h2 class="section-title">Blog</h2>
+                    <a href="blog.html" class="view-all-link">View all</a>
+                </div>
 
-                    <div class="horizontal-grid">
-                        <div class="blog-card" data-type="skin cancer" data-stories="icons/story1.jpg,icons/story2.jpg,icons/story7.mp4">
-                            <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
-                            <div class="blog-bottom">
-                                <p class="blog-title">Don't forget to use SPF</p>
-                            </div>
-                        </div>
+                <div class="horizontal-grid">
 
-                        <div class="blog-card" data-type="skin cancer" data-stories="icons/story1.jpg,icons/story2.jpg,icons/story3.jpg">
-                            <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
-                            <div class="blog-bottom">
-                                <p class="blog-title">Check your moles regularly</p>
-                            </div>
-                        </div>
-
-                        <div class="blog-card" data-type="skin cancer">
-                            <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
-                            <div class="blog-bottom">
-                                <p class="blog-title">Don't forget to use SPF</p>
-                            </div>
+                    <div class="blog-card" data-type="skin cancer" data-stories="icons/story1.jpg,icons/story2.jpg,icons/story7.mp4">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Don't forget to use SPF</p>
                         </div>
                     </div>
-                </section>
 
-                <!-- Popup për Stories -->
-                <div id="story-popup" class="story-popup">
-                    <div class="story-content">
-                        <div class="story-bars" id="story-bars"></div>
-                        <span class="close-btn">&times;</span>
-                        <img src="" alt="Story Image" class="story-image" id="story-image" />
-                        <video class="story-video" id="story-video" muted playsinline></video>
+                    <div class="blog-card" data-type="skin cancer" data-stories="icons/story1.jpg,icons/story2.jpg,icons/story3.jpg">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Check your moles regularly</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card" data-type="skin care">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Don't forget to use SPF</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card" data-type="skin care">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Don't forget to use SPF</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card" data-type="skin care">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Don't forget to use SPF</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card" data-type="e-books">
+                        <img src="icons/blog_image.png" alt="Blog Image" class="blog-image" />
+                        <div class="blog-bottom">
+                            <p class="blog-title">Don't forget to use SPF</p>
+                        </div>
                     </div>
                 </div>
             </section>
-
+            <!-- Popup për Stories -->
+            <div id="story-popup" class="story-popup">
+                <div class="story-content">
+                    <div class="story-bars" id="story-bars"></div>
+                    <span class="close-btn">&times;</span>
+                    <img src="" alt="Story Image" class="story-image" id="story-image" />
+                    <video class="story-video" id="story-video" muted playsinline></video>
+                </div>
+            </div>
         </main>
+
 
         <footer class="footer">
             <div class="footer-nav">
@@ -212,12 +401,12 @@
                     <img src="icons/Ai_icon.png" alt="AI Chat" />
                     <span>AI Chat</span>
                 </a>
-                <a href="scan.html" class="footer-btn active">
-                    <img src="icons/active_scan.png" alt="Mole Scan" />
+                <a href="scan.html" class="footer-btn">
+                    <img src="icons/scan.png" alt="Mole Scan" />
                     <span>Scanner</span>
                 </a>
-                <a href="home.html" class="footer-btn">
-                    <img src="icons/home_icon.png" alt="Home" />
+                <a href="home.html" class="footer-btn active">
+                    <img src="icons/active_home_icon.png" alt="Home" />
                     <span>Home</span>
                 </a>
                 <a href="products.html" class="footer-btn">
@@ -234,6 +423,7 @@
                 <img src="icons/home_indicator.png" alt="home_indicator" />
             </div>
         </footer>
+
     </div>
 
     <script>
@@ -360,98 +550,82 @@
     </script>
 
 
-    <!-- SCRIPT për modelin dhe skanimin -->
+
+
+
     <script>
-        const URL = "https://teachablemachine.withgoogle.com/models/Nzm7SqHut/";
-        let model, labelContainer, maxPredictions;
+        const tabs = document.querySelectorAll('.tab');
 
-        async function init() {
-            const modelURL = URL + "model.json";
-            const metadataURL = URL + "metadata.json";
-            model = await tmImage.load(modelURL, metadataURL);
-            maxPredictions = model.getTotalClasses();
-            labelContainer = document.querySelector(".label-container");
-        }
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active')); // Hiq active nga të gjithë
+                tab.classList.add('active'); // Shto active vetëm tek ky që klikova
+            });
+        });
+    </script>
 
-        function translateClassName(className) {
-            if (className === "kancerogjene") return "Cancerous";
-            if (className === "jo-kancerogjene") return "Non-Cancerous";
-            return className;
-        }
 
-        async function predict(imageElement) {
-            const startTime = performance.now();
-            const prediction = await model.predict(imageElement);
-            const endTime = performance.now();
-            const elapsedTime = (endTime - startTime).toFixed(2);
+    <script>
+        const wishlistButtons = document.querySelectorAll('.wishlist-container');
 
-            labelContainer.innerHTML = "";
+        wishlistButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const img = button.querySelector('img');
+                const isActive = button.getAttribute('data-active') === "true";
 
-            let maxIndex = 0;
-            for (let i = 1; i < prediction.length; i++) {
-                if (prediction[i].probability > prediction[maxIndex].probability) {
-                    maxIndex = i;
-                } else if (prediction[i].probability === prediction[maxIndex].probability) {
-                    maxIndex = i;
+                if (isActive) {
+                    img.src = 'icons/heart.png'; // rikthehet në heart normal
+                    button.setAttribute('data-active', "false");
+                } else {
+                    img.src = 'icons/active_heart.png'; // vendoset active heart
+                    button.setAttribute('data-active', "true");
+                }
+            });
+        });
+    </script>
+
+
+    <script>
+        const skinTypeElements = document.querySelectorAll('.skin-type');
+
+        skinTypeElements.forEach(el => {
+            const skin = el.getAttribute('data-skin');
+
+            if (skin) {
+                switch (skin.trim().toLowerCase()) {
+                    case "all skin types":
+                        el.classList.add('skin-all');
+                        el.textContent = "All skin types";
+                        break;
+                    case "normal skin":
+                        el.classList.add('skin-normal');
+                        el.textContent = "Normal skin";
+                        break;
+                    case "dry skin":
+                        el.classList.add('skin-dry');
+                        el.textContent = "Dry skin";
+                        break;
+                    case "oily skin":
+                        el.classList.add('skin-oily');
+                        el.textContent = "Oily skin";
+                        break;
+                    case "combination skin":
+                        el.classList.add('skin-combination');
+                        el.textContent = "Combination skin";
+                        break;
+                    case "dry/combo skin":
+                        el.classList.add('skin-dry-combo');
+                        el.textContent = "Dry/Combo skin";
+                        break;
+                    case "oily/combo skin":
+                        el.classList.add('skin-oily-combo');
+                        el.textContent = "Oily/Combo skin";
+                        break;
+                    default:
+                        el.style.display = "none"; // fsheh nëse nuk ka kategori të saktë
                 }
             }
-
-            const bestPrediction = prediction[maxIndex];
-            const percentage = (bestPrediction.probability * 100).toFixed(2);
-
-            const progressBar = document.createElement("div");
-            progressBar.className = "progress-bar";
-
-            const progress = document.createElement("div");
-            progress.className = "progress " + (percentage > 50 ? "pink-bar" : "orange-bar");
-            progress.style.width = percentage + "%";
-            progress.innerText = `${translateClassName(bestPrediction.className)}: ${percentage}%`;
-
-            progressBar.appendChild(progress);
-            labelContainer.appendChild(progressBar);
-
-            document.querySelector(".time-container").innerText = `Analysis Time: ${elapsedTime} ms`;
-
-            // Shfaq seksionin Skin Cancer Awareness
-            document.querySelector(".skin-cancer-section").style.display = "block";
-        }
-
-        function handleFile(file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.src = e.target.result;
-                img.onload = function() {
-                    document.querySelector(".image-container").innerHTML = "";
-                    document.querySelector(".image-container").appendChild(img);
-                    predict(img);
-                };
-            };
-            reader.readAsDataURL(file);
-        }
-
-        document.getElementById("imageUpload").addEventListener("change", function(event) {
-            if (event.target.files.length > 0) {
-                handleFile(event.target.files[0]);
-            }
         });
-
-        const dropArea = document.querySelector(".drop-area");
-        dropArea.addEventListener("click", () => document.getElementById("imageUpload").click());
-        dropArea.addEventListener("dragover", (event) => {
-            event.preventDefault();
-            dropArea.style.borderColor = "#ff6b81";
-        });
-        dropArea.addEventListener("dragleave", () => dropArea.style.borderColor = "#ccc");
-        dropArea.addEventListener("drop", (event) => {
-            event.preventDefault();
-            dropArea.style.borderColor = "#ccc";
-            if (event.dataTransfer.files.length > 0) {
-                handleFile(event.dataTransfer.files[0]);
-            }
-        });
-
-        init();
     </script>
 
 
@@ -508,6 +682,115 @@
             }
         });
     </script>
+
+
+    <script>
+        const productCards = document.querySelectorAll('.product-card');
+        const popup = document.getElementById('productPopup');
+        const overlay = document.getElementById('popupOverlay');
+
+        // Funksione për të ndaluar / rikthyer scroll-in në body
+        const disableScroll = () => {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        };
+
+        const enableScroll = () => {
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+        };
+
+        // Funksion për të mbyllur popup-in me animacion smooth
+        function closePopupSmooth() {
+            popup.classList.add('closing-popup');
+            popup.addEventListener('animationend', () => {
+                popup.classList.remove('open');
+                popup.classList.remove('closing-popup');
+                overlay.classList.remove('active');
+                popup.style.transform = 'translateY(100%)';
+                enableScroll();
+            }, {
+                once: true
+            });
+        }
+
+        // Hap popup-in kur klikojmë një kartë
+        productCards.forEach(card => {
+            card.addEventListener('click', function(event) {
+                if (event.target.closest('.wishlist-container')) return;
+                overlay.classList.add('active');
+                popup.classList.add('open');
+                popup.style.transform = 'translateY(0)';
+                disableScroll();
+            });
+        });
+
+        // Mbyll popup-in kur klikojmë jashtë (overlay)
+        overlay.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                closePopupSmooth();
+            }
+        });
+
+        // Drag për të mbyllur popup-in vetëm nga maja
+        let isDragging = false;
+        let startY = 0;
+        let currentY = 0;
+        let draggingAllowed = false;
+
+        popup.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+            currentY = startY;
+
+            draggingAllowed = popup.scrollTop === 0;
+            isDragging = true;
+
+            if (draggingAllowed) {
+                popup.style.transition = '';
+            }
+        });
+
+        popup.addEventListener('touchmove', (e) => {
+            if (!isDragging || !draggingAllowed) return;
+
+            currentY = e.touches[0].clientY;
+            const diff = currentY - startY;
+
+            if (diff > 0) {
+                popup.style.transform = `translateY(${diff}px)`;
+            }
+        });
+
+        popup.addEventListener('touchend', () => {
+            if (!isDragging || !draggingAllowed) return;
+
+            isDragging = false;
+            draggingAllowed = false;
+
+            const diff = currentY - startY;
+
+            if (diff > 100) {
+                popup.style.transition = 'transform 0.3s ease';
+                popup.style.transform = 'translateY(100%)';
+                closePopupSmooth();
+            } else {
+                popup.style.transition = 'transform 0.3s ease';
+                popup.style.transform = 'translateY(0)';
+            }
+        });
+
+        // 🎯 Wishlist në popup - aktivizohet me klikim
+        const popupWishlist = document.querySelector('.wishlist-container-popup');
+        const wishlistIcon = popupWishlist.querySelector('img');
+
+        popupWishlist.addEventListener('click', () => {
+            const isActive = popupWishlist.classList.toggle('active');
+            wishlistIcon.src = isActive ? 'icons/active_heart.png' : 'icons/heart.png';
+        });
+    </script>
+
 
 
     <!-- SCRIPT për Story Popup -->
@@ -702,6 +985,7 @@
             });
         });
     </script>
+
 
 </body>
 
