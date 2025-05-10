@@ -42,6 +42,13 @@
         align-items: flex-start;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         padding-top: 200px;
+        opacity: 1;
+        transition: opacity 1s ease;
+    }
+    /* Zbehje e plotë e faqes */
+    
+    body.fade-out {
+        opacity: 0;
     }
     /* Gradient që lëviz */
     
@@ -56,7 +63,6 @@
             background-position: 0% 50%;
         }
     }
-    /* Kutia rreth logos */
     
     .logo-box {
         width: 220px;
@@ -67,9 +73,7 @@
         justify-content: center;
         align-items: center;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transition: opacity 1s ease;
     }
-    /* Logoja vetë */
     
     .logo-box img.logo {
         width: 90%;
@@ -80,7 +84,6 @@
         /* fillimisht e prerë komplet */
         animation: revealLogo 2.5s ease forwards;
     }
-    /* Animacioni i logos */
     
     @keyframes revealLogo {
         0% {
@@ -94,12 +97,6 @@
             clip-path: inset(0 0% 0 0);
             opacity: 1;
         }
-    }
-    /* Zbehja e kutisë kur largohet */
-    
-    .fade-out {
-        opacity: 0;
-        transition: opacity 1s ease;
     }
     
     .header {
