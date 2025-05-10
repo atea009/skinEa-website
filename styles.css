@@ -27,6 +27,79 @@
         position: relative;
     }
     /* header */
+    /* LOGIN PAGE */
+    
+    body.index-page {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(-45deg, #f3a5da, #d1b1e0, #e1b3d2, #f3a5da);
+        background-size: 400% 400%;
+        animation: movingGradient 15s ease infinite;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-top: 200px;
+    }
+    
+    @keyframes movingGradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    /* Fillimisht pa zbehje */
+    
+    body.index-page {
+        opacity: 1;
+        transition: opacity 1s ease;
+    }
+    /* Kur fillon zbehja */
+    
+    body.fade-out {
+        opacity: 0;
+    }
+    
+    .logo-box {
+        width: 220px;
+        height: 220px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo-box img.logo {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+        /* fillimisht e prerë komplet */
+        animation: revealLogo 2.5s ease forwards;
+    }
+    
+    @keyframes revealLogo {
+        0% {
+            clip-path: inset(0 100% 0 0);
+            opacity: 0;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            clip-path: inset(0 0% 0 0);
+            opacity: 1;
+        }
+    }
     
     .header {
         position: fixed;
