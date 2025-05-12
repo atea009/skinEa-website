@@ -329,12 +329,12 @@
     }
     
     .skin-btn {
-        padding: 10px 16px;
+        padding: 8px 16px;
         border-radius: 20px;
         border: 1.5px solid #ccc;
         background: #fff;
         color: #292d32;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
@@ -344,6 +344,33 @@
         background: #f3a5da;
         border-color: #f3a5da;
         color: #fff;
+        box-shadow: 0 0 0 3px #f3a5da33;
+    }
+    
+    .issue-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+        padding-bottom: 16px;
+    }
+    
+    .issue-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        color: #292d32;
+        border-radius: 20px;
+        border: 1.5px solid #ccc;
+        background: #fff;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+    
+    .issue-btn.selected {
+        background: #f3a5da;
+        color: white;
+        border-color: #f3a5da;
         box-shadow: 0 0 0 3px #f3a5da33;
     }
     
@@ -391,31 +418,6 @@
     
     .color-6 {
         background: #3e2a1c;
-    }
-    
-    .issue-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 10px;
-        padding-bottom: 16px;
-    }
-    
-    .issue-btn {
-        padding: 8px 16px;
-        font-size: 14px;
-        border-radius: 20px;
-        border: 1.5px solid #ccc;
-        background: #fff;
-        cursor: pointer;
-        font-weight: 600;
-        transition: all 0.2s ease;
-    }
-    
-    .issue-btn.selected {
-        background: #f3a5da;
-        color: white;
-        border-color: #f3a5da;
     }
     
     .logout-container {
