@@ -55,13 +55,9 @@
                             <span class="detail-label">Birthyear</span>
                             <input type="text" class="detail-input" id="birthDate" />
                         </div>
+
+
                     </div>
-                    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-                    <script>
-                        flatpickr("#birthDate", {
-                            dateFormat: "Y-m-d"
-                        });
-                    </script>
 
                     <div class="skin-section">
                         <p class="detail-label">Skin Color</p>
@@ -508,6 +504,14 @@
             } else {
                 detailsDropdown.style.display = 'block';
             }
+        });
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#birthDate", { //Birthday
+            dateFormat: "Y-m-d"
         });
     </script>
 
