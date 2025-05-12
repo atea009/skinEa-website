@@ -51,10 +51,14 @@
                           </select>
                         </div>
 
-                        <div class="detail-row">
-                            <span class="detail-label">Birthyear</span>
-                            <input type="date" class="detail-input" />
-                        </div>
+                        <input type="text" class="detail-input" id="birthDate" />
+                        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                        <script>
+                            flatpickr("#birthDate", {
+                                dateFormat: "Y-m-d"
+                            });
+                        </script>
+
                     </div>
                     <div class="skin-section">
                         <p class="detail-label">Skin Color</p>
