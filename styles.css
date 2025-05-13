@@ -174,8 +174,8 @@
     /* Back Button */
     
     .popup-back {
-        width: 9px;
-        height: 15px;
+        width: 5px;
+        height: 10px;
         cursor: pointer;
         margin-bottom: 20px;
     }
