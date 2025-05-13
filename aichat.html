@@ -89,14 +89,18 @@
         function formatBold(text) {
             if (!text) return "";
 
-            // 1. Shto hapësirë përpara bold-it: nga **fjale** në <br><br><strong>fjale</strong>
+            // 1. Konverto **bold** te zakonshëm me hapësirë përpara
             text = text.replace(/\*\*(.+?)\*\*/g, "<br><br><strong>$1</strong>");
 
-            // 2. Çdo renditje numerike (1. 2. 3.) fillon në rresht të ri
-            text = text.replace(/(\d+\.\s*)/g, "<br>$1");
+            // 2. Por nëse është numër + bold në të njëjtin rresht (p.sh. 1. **Fjala**), bashkoji
+            text = text.replace(/<br><br>(\d+\.\s*)<strong>/g, "<br><strong>$1");
+
+            // 3. Nëse ka numra të izoluar (1. pa bold), vendosi në rresht të ri
+            text = text.replace(/(\d+\.\s*)(?!<\/?strong>)/g, "<br>$1");
 
             return text;
         }
+
 
 
         const textarea = document.querySelector(".chat-input");
