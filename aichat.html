@@ -19,7 +19,6 @@
             <a href="javascript:void(0);" class="back-button" id="backButton">
                 <img src="icons/back.png" alt="Back">
             </a>
-
         </div>
 
         <div class="chat-messages"></div>
@@ -32,7 +31,6 @@
                 <img src="icons/send.png" alt="Send">
             </button>
         </div>
-
 
     </div>
 
@@ -47,7 +45,6 @@
             input.style.height = "auto";
             input.style.height = input.scrollHeight + "px";
 
-            // Shto mesazhin "Typing..." të botit
             const typingMessage = addMessage("Typing...", 'bot', true);
 
             try {
@@ -68,8 +65,8 @@
                 const data = await response.json();
                 const botText = data.reply.trim();
 
-                // Zëvendëso mesazhin "Typing..." me përgjigjen reale
-                typingMessage.textContent = botText;
+                // Shfaq përgjigjen me tekst bold ku ka **fjale**
+                typingMessage.innerHTML = formatBold(botText);
 
             } catch (error) {
                 typingMessage.textContent = "An error occurred. Please try again later!";
@@ -80,27 +77,25 @@
             const messagesDiv = document.querySelector(".chat-messages");
             const messageDiv = document.createElement("div");
             messageDiv.className = `message-bubble ${sender}-message`;
-            messageDiv.textContent = text;
+            messageDiv.innerHTML = sender === 'bot' ? formatBold(text) : text;
             messagesDiv.appendChild(messageDiv);
-
-            // Scroll automatik poshtë sa herë dërgohet ose merret mesazh
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
-            // Nëse është mesazh i përkohshëm (si Typing...), ktheje referencën
             if (isTemporary) {
                 return messageDiv;
             }
         }
 
-        // Auto-expand textarea as typing
+        function formatBold(text) {
+            return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        }
+
         const textarea = document.querySelector('.chat-input');
         textarea.addEventListener('input', function() {
             this.style.height = 'auto';
             this.style.height = (this.scrollHeight) + 'px';
         });
-    </script>
 
-    <script>
         const backButton = document.getElementById('backButton');
         backButton.addEventListener('click', function() {
             history.back();

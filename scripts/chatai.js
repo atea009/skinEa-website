@@ -22,7 +22,7 @@ chatForm.addEventListener('submit', async(e) => {
 
         const data = await response.json();
         if (data.reply) {
-            chatBox.innerHTML += `<div class="bot-message">${data.reply}</div>`;
+            chatBox.innerHTML += `<div class="bot-message">${formatBold(data.reply)}</div>`;
         } else {
             chatBox.innerHTML += `<div class="bot-message">Gabim në server.</div>`;
         }
@@ -32,3 +32,8 @@ chatForm.addEventListener('submit', async(e) => {
         chatBox.innerHTML += `<div class="bot-message">Nuk u lidh me serverin.</div>`;
     }
 });
+
+// Funksioni për të bërë **fjale** në <strong>fjale</strong>
+function formatBold(text) {
+    return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
