@@ -89,17 +89,15 @@
         function formatBold(text) {
             if (!text) return "";
 
-            // 1. Vendos bold pa <br> përpara
-            text = text.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+            // 1. Gjej numra me bold: 1. **fjale** → <br><strong>1. fjale</strong>
+            text = text.replace(/(?:^|\n)(\d+\.\s*)\*\*(.+?)\*\*/g, "<br><strong>$1$2</strong>");
 
-            // 2. Shto <br> para numrave si 1. 2. 3. vetëm nëse NUK janë në fillim të rreshtit
-            text = text.replace(/(?<!^|\n)(\d+\.\s*)/g, "<br>$1");
-
-            // 3. Opsionale: dy <br> para çdo <strong> që NUK ka numër përpara
-            text = text.replace(/([^>\d])<strong>/g, "$1<br><br><strong>");
+            // 2. Të tjerat: **fjale** → <br><br><strong>fjale</strong>
+            text = text.replace(/\*\*(.+?)\*\*/g, "<br><br><strong>$1</strong>");
 
             return text;
         }
+
 
 
 
