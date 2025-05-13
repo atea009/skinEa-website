@@ -24,21 +24,6 @@
     </div>
 
 
-
-    <script>
-        // Zgjo serverin pa dërguar mesazh real
-        fetch("https://skinea-ai-server-1.onrender.com/chat", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    message: "ping"
-                })
-            }).then(() => console.log("Server pinged from home.html"))
-            .catch(err => console.warn("Ping failed", err));
-    </script>
-
 </body>
 
 </html>
