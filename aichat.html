@@ -88,8 +88,16 @@
         // Funksioni që konverton **fjale** në <strong>fjale</strong>
         function formatBold(text) {
             if (!text) return "";
-            return text.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+
+            // 1. Shto hapësirë përpara bold-it: nga **fjale** në <br><br><strong>fjale</strong>
+            text = text.replace(/\*\*(.+?)\*\*/g, "<br><br><strong>$1</strong>");
+
+            // 2. Çdo renditje numerike (1. 2. 3.) fillon në rresht të ri
+            text = text.replace(/(\d+\.\s*)/g, "<br>$1");
+
+            return text;
         }
+
 
         const textarea = document.querySelector(".chat-input");
         textarea.addEventListener("input", function() {
