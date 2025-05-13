@@ -359,8 +359,6 @@
         });
     </script>
 
-
-    <!-- SCRIPT për modelin dhe skanimin -->
     <script>
         const URL = "https://teachablemachine.withgoogle.com/models/Nzm7SqHut/";
         let model, labelContainer, maxPredictions;
@@ -373,9 +371,11 @@
             labelContainer = document.querySelector(".label-container");
         }
 
+        // Përkthimi nga shqip në anglisht për rezultatet
         function translateClassName(className) {
-            if (className === "kancerogjene") return "Cancerous";
-            if (className === "jo-kancerogjene") return "Non-Cancerous";
+            const clean = className.trim().toLowerCase();
+            if (clean === "kancerogjene") return "Needs Medical Review";
+            if (clean === "jo-kancerogjene") return "No Immediate Concern";
             return className;
         }
 
@@ -391,13 +391,12 @@
             for (let i = 1; i < prediction.length; i++) {
                 if (prediction[i].probability > prediction[maxIndex].probability) {
                     maxIndex = i;
-                } else if (prediction[i].probability === prediction[maxIndex].probability) {
-                    maxIndex = i;
                 }
             }
 
             const bestPrediction = prediction[maxIndex];
             const percentage = (bestPrediction.probability * 100).toFixed(2);
+            const translatedClassName = translateClassName(bestPrediction.className); // <- Përkthimi këtu
 
             const progressBar = document.createElement("div");
             progressBar.className = "progress-bar";
@@ -405,7 +404,7 @@
             const progress = document.createElement("div");
             progress.className = "progress " + (percentage > 50 ? "pink-bar" : "orange-bar");
             progress.style.width = percentage + "%";
-            progress.innerText = `${translateClassName(bestPrediction.className)}: ${percentage}%`;
+            progress.innerText = `${translatedClassName}: ${percentage}%`;
 
             progressBar.appendChild(progress);
             labelContainer.appendChild(progressBar);
@@ -453,6 +452,7 @@
 
         init();
     </script>
+
 
 
     <script>
