@@ -791,7 +791,8 @@
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        background: rgba(255, 250, 245, 0.3);
+        /* background: rgba(255, 250, 245, 0.3); */
+        background: rgba(236, 231, 231, 0.21);
         backdrop-filter: blur(20.5px);
         display: flex;
         justify-content: center;
@@ -975,14 +976,29 @@
         object-fit: cover;
     }
     /* Wishlist që qëndron brenda fotos */
-    
-    .wishlist-container-popup {
+    /* .wishlist-container-popup {
         position: absolute;
         top: 12px;
         left: 12px;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.4);
+        width: 75px;
+        height: 75px;
+        background: rgba(236, 231, 231, 0.21);
+        backdrop-filter: blur(10px);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    } */
+    
+    .wishlist-container-popup {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-25%, -25%);
+        width: 75px;
+        height: 75px;
+        background: rgba(236, 231, 231, 0.21);
         backdrop-filter: blur(10px);
         border-radius: 50%;
         display: flex;
@@ -992,8 +1008,8 @@
     }
     
     .popup-wishlist-icon {
-        width: 20px;
-        height: 20px;
+        width: 40px;
+        height: 40px;
     }
     
     .popup-product-name {
