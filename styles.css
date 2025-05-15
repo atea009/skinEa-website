@@ -956,7 +956,7 @@
     .popup-product {
         background: #FFFFFF;
         border-radius: 20px;
-        padding: 20px;
+        padding: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -999,7 +999,7 @@
     
     .popup-product-name {
         text-align: center;
-        margin-top: 20px;
+        margin-top: 0px;
     }
     
     .popup-brand-name {
