@@ -976,26 +976,11 @@
         object-fit: cover;
     }
     /* Wishlist që qëndron brenda fotos */
-    /* .wishlist-container-popup {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        width: 75px;
-        height: 75px;
-        background: rgba(236, 231, 231, 0.21);
-        backdrop-filter: blur(10px);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2;
-    } */
     
     .wishlist-container-popup {
         position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(-25%, -25%);
+        top: 12px;
+        left: 12px;
         width: 75px;
         height: 75px;
         background: rgba(236, 231, 231, 0.21);
