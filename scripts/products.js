@@ -4,12 +4,11 @@ window.addEventListener("DOMContentLoaded", () => {
     const grid = document.querySelector(".products-grid");
     const originalTemplate = document.querySelector(".product-card").cloneNode(true);
 
-    // Hiq template-in nga DOM-i që të mos shfaqet karta bosh
     document.querySelector(".product-card").remove();
 
     db.on("value", (snapshot) => {
         const products = snapshot.val();
-        grid.innerHTML = ""; // Pastro grid-in
+        grid.innerHTML = "";
 
         Object.entries(products).forEach(([key, product]) => {
             const card = originalTemplate.cloneNode(true);
@@ -17,16 +16,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
             const img = card.querySelector(".product-photo");
             img.src = product.photo;
-
-            // Kontrollo ngarkimin e fotos
-            console.log("Ngarkim fotoje për:", product.name, "URL:", product.photo);
-            img.onerror = () => {
-                console.error("❌ FOTO NUK U NGARKUA:", product.name, product.photo);
-                img.src = "icons/prod_image.png"; // fallback
-            };
+            img.onerror = () => img.src = "icons/prod_image.png";
 
             card.querySelector(".brand-name").textContent = product.brand;
             card.querySelector(".product-name").textContent = product.name;
+
             updateSkinTypeBadge(card, product.skin);
 
             const favBtn = card.querySelector(".wishlist-container");
@@ -36,8 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             favBtn.addEventListener("click", (e) => {
                 e.stopPropagation();
-                const newVal = !product.favourite;
-                db.child(key).update({ favourite: newVal });
+                db.child(key).update({ favourite: !product.favourite });
             });
 
             card.addEventListener("click", (e) => {
@@ -48,6 +41,8 @@ window.addEventListener("DOMContentLoaded", () => {
             grid.appendChild(card);
         });
     });
+
+    setupCategoryTabs();
 });
 
 function updateHeartIcon(button, state) {
@@ -62,16 +57,19 @@ function showPopup(product, key) {
 
     const popupImg = popup.querySelector(".popup-product-photo");
     popupImg.src = product.photo;
-
-    popupImg.onerror = () => {
-        console.error("❌ FOTO POPUP NUK U NGARKUA:", product.name, product.photo);
-        popupImg.src = "icons/prod_image.png";
-    };
+    popupImg.onerror = () => popupImg.src = "icons/prod_image.png";
 
     popup.querySelector(".popup-brand-name").textContent = product.brand;
     popup.querySelector(".popup-product-name-bold").textContent = product.name;
     popup.querySelectorAll(".popup-text")[0].textContent = product.desc;
     popup.querySelectorAll(".popup-text")[1].textContent = product.ingredients;
+
+    const buyBtn = popup.querySelector(".buy-button");
+    buyBtn.onclick = () => {
+        if (product.buyLink) {
+            window.open(product.buyLink, "_blank");
+        }
+    };
 
     popup.setAttribute("data-key", key);
 
@@ -79,8 +77,7 @@ function showPopup(product, key) {
     updateHeartIcon(popupBtn, product.favourite);
 
     popupBtn.onclick = () => {
-        const newVal = !product.favourite;
-        db.child(key).update({ favourite: newVal });
+        db.child(key).update({ favourite: !product.favourite });
     };
 
     overlay.classList.add("active");
@@ -98,48 +95,33 @@ function updateSkinTypeBadge(card, skinType) {
     let label = "";
 
     switch (lower) {
-        case "all types":
         case "all skin types":
             className = "skin-all";
             label = "All skin types";
             break;
-        case "normal":
         case "normal skin":
             className = "skin-normal";
             label = "Normal skin";
             break;
-        case "dry":
         case "dry skin":
             className = "skin-dry";
             label = "Dry skin";
             break;
-        case "oily":
         case "oily skin":
             className = "skin-oily";
             label = "Oily skin";
             break;
-        case "combination":
         case "combination skin":
             className = "skin-combination";
             label = "Combination skin";
             break;
-        case "dry/combo":
         case "dry/combo skin":
             className = "skin-dry-combo";
             label = "Dry/Combo skin";
             break;
-        case "oily/combo":
         case "oily/combo skin":
             className = "skin-oily-combo";
             label = "Oily/Combo skin";
-            break;
-        case "sensitive":
-            className = "skin-normal";
-            label = "Sensitive skin";
-            break;
-        case "acne-prone":
-            className = "skin-oily";
-            label = "Acne-prone skin";
             break;
         default:
             skinElement.style.display = "none";
@@ -149,3 +131,41 @@ function updateSkinTypeBadge(card, skinType) {
     skinElement.classList.add(className);
     skinElement.textContent = label;
 }
+
+function setupCategoryTabs() {
+    const tabs = document.querySelectorAll(".tab");
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            const selectedCategory = tab.textContent.trim().toLowerCase();
+            const cards = document.querySelectorAll(".products-grid .product-card");
+            cards.forEach(card => {
+                const name = card.querySelector(".product-name").textContent.trim().toLowerCase();
+                const brand = card.querySelector(".brand-name").textContent.trim().toLowerCase();
+
+                const match = Object.values(window.productsCache || {}).find(prod =>
+                    prod.name.toLowerCase() === name && prod.brand.toLowerCase() === brand
+                );
+
+                if (!match) return card.style.display = "none";
+
+                if (selectedCategory === "all" || match.category.toLowerCase() === selectedCategory) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    });
+}
+
+const productsCache = {};
+db.once("value").then(snapshot => {
+    Object.entries(snapshot.val()).forEach(([_, product]) => {
+        const id = `${product.name.toLowerCase()}_${product.brand.toLowerCase()}`;
+        productsCache[id] = product;
+    });
+    window.productsCache = productsCache;
+});
