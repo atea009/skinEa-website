@@ -394,7 +394,7 @@
         font-weight: bold;
         color: #F3A5DA;
         font-size: 16px;
-        align-items: right;
+        padding-right: 0;
     }
     
     .skin-section {
