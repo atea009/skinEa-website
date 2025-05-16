@@ -388,13 +388,13 @@
         color: #292d32;
     }
     
-    .detail-select,
-    .detail-input {
+    .detail-select {
         border: none;
         background: transparent;
         font-weight: bold;
         color: #F3A5DA;
         font-size: 16px;
+        align-items: right;
     }
     
     .skin-section {
