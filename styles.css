@@ -1006,13 +1006,14 @@
     }
     
     .popup-brand-name {
-        font-size: 20px;
+        margin-top: 10px;
+        font-size: 22px;
         font-weight: 400;
         color: #363535;
     }
     
     .popup-product-name-bold {
-        font-size: 24px;
+        font-size: 27px;
         font-weight: 700;
         color: #292D32;
         margin-top: 4px;
