@@ -1,0 +1,78 @@
+{
+    "acne": {
+        "morningRoutine": {},
+        "nightRoutine": {
+            "Special treatment": {
+                "id": "prod1",
+                "_comment": "prod_acne_treatment_1"
+            },
+            "Water based Cleanser": {
+                "id": "prod2",
+                "_comment": "prod_acne_friendly_cleanser"
+            }
+        }
+    },
+    "wrinkles_fine_lines": {
+        "morningRoutine": {},
+        "nightRoutine": {
+            "Special treatment": {
+                "id": "prod3",
+                "_comment": "prod_retinol_serum"
+            }
+        }
+    },
+    "redness_rosacea": {
+        "morningRoutine": {},
+        "nightRoutine": {
+            "Toner": {
+                "id": "prod4",
+                "_comment": "prod_calming_toner"
+            }
+        }
+    },
+    "enlarged_pores": {
+        "morningRoutine": {},
+        "nightRoutine": {
+            "Special treatment": {
+                "id": "prod5",
+                "_comment": "prod_clay_mask"
+            }
+        }
+    },
+    "pigmentation": {
+        "morningRoutine": {
+            "Serum": {
+                "id": "prod6",
+                "_comment": "prod_vitamin_c_serum"
+            }
+        },
+        "nightRoutine": {}
+    },
+    "sensitivity": {
+        "morningRoutine": {},
+        "nightRoutine": {
+            "Serum": {
+                "id": "prod7",
+                "_comment": "prod_soothing_serum"
+            }
+        }
+    },
+    "dark_circles": {
+        "morningRoutine": {},
+        "nightRoutine": {
+            "Special treatment": {
+                "id": "prod8",
+                "_comment": "prod_eye_cream_darkcircles"
+            }
+        }
+    },
+    "skin_texture": {
+        "morningRoutine": {},
+        "nightRoutine": {
+            "Special treatment": {
+                "id": "prod9",
+                "_comment": "prod_exfoliating_treatment"
+            }
+        }
+    }
+}

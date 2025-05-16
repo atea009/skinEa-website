@@ -1,0 +1,82 @@
+{
+    "normal": {
+        "morningRoutine": {
+            "Oil based Cleanser": "prod4",
+            "Water based Cleanser": "prod7",
+            "Toner": "prod10",
+            "Serum": "prod6",
+            "Moisturiser": "prod5",
+            "SPF": "prod9",
+            "Special treatment": null
+        },
+        "nightRoutine": {
+            "Oil based Cleanser": "prod1",
+            "Water based Cleanser": "prod3",
+            "Toner": "prod2",
+            "Serum": "prod8",
+            "Moisturiser": "prod6",
+            "SPF": "prod5",
+            "Special treatment": null
+        }
+    },
+    "combined": {
+        "morningRoutine": {
+            "Oil based Cleanser": "prod10",
+            "Water based Cleanser": "prod1",
+            "Toner": "prod2",
+            "Serum": "prod3",
+            "Moisturiser": "prod4",
+            "SPF": "prod5",
+            "Special treatment": null
+        },
+        "nightRoutine": {
+            "Oil based Cleanser": "prod6",
+            "Water based Cleanser": "prod7",
+            "Toner": "prod8",
+            "Serum": "prod9",
+            "Moisturiser": "prod10",
+            "SPF": "prod1",
+            "Special treatment": null
+        }
+    },
+    "oily": {
+        "morningRoutine": {
+            "Oil based Cleanser": "prod6",
+            "Water based Cleanser": "prod3",
+            "Toner": "prod5",
+            "Serum": "prod10",
+            "Moisturiser": "prod1",
+            "SPF": "prod2",
+            "Special treatment": null
+        },
+        "nightRoutine": {
+            "Oil based Cleanser": "prod7",
+            "Water based Cleanser": "prod8",
+            "Toner": "prod9",
+            "Serum": "prod4",
+            "Moisturiser": "prod6",
+            "SPF": "prod3",
+            "Special treatment": null
+        }
+    },
+    "dry": {
+        "morningRoutine": {
+            "Oil based Cleanser": "prod1",
+            "Water based Cleanser": "prod2",
+            "Toner": "prod3",
+            "Serum": "prod4",
+            "Moisturiser": "prod5",
+            "SPF": "prod6",
+            "Special treatment": null
+        },
+        "nightRoutine": {
+            "Oil based Cleanser": "prod7",
+            "Water based Cleanser": "prod8",
+            "Toner": "prod9",
+            "Serum": "prod10",
+            "Moisturiser": "prod1",
+            "SPF": "prod2",
+            "Special treatment": null
+        }
+    }
+}
