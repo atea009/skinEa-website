@@ -813,6 +813,7 @@
         background: rgb(255, 255, 255);
         border-top-left-radius: 20px;
         border-top-right-radius: 0px;
+        border-top: 1.5px solid #F0F0F0;
         padding: 10px 8px 7px;
         /* pak padding poshtë që mos ngjitet shumë ngushtë */
         box-sizing: border-box;
@@ -967,6 +968,8 @@
         position: relative;
         width: 100%;
         max-width: 370px;
+        border: 1.8px solid #F0F0F0;
+        border-radius: 16px;
     }
     
     .popup-product-photo {
