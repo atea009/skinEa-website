@@ -1,0 +1,23 @@
+{
+    "user1": {
+        "username": "atea",
+        "email": "atea@example.com",
+        "password": "hashedpassword123",
+        "skin_type": "oily",
+        "skin_color": "fair",
+        "skin_issue": "acne",
+        "birthdate": "2002-04-15",
+        "gender": "female"
+    },
+    "user2": {
+        "username": "atea1",
+        "email": "atea1@example.com",
+        "password": "password123",
+        "skin_type": "oily",
+        "skin_color": "fair",
+        "skin_issue": "acne",
+        "birthdate": "2002-04-15",
+        "gender": "female"
+    }
+
+}

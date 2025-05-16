@@ -1,6 +1,10 @@
 const db = firebase.database().ref("products");
 
 window.addEventListener("DOMContentLoaded", () => {
+    const userEmail = localStorage.getItem("email");
+    const cleanEmail = userEmail ? userEmail.replace(/\./g, "_") : null;
+    const wishlistRef = cleanEmail ? firebase.database().ref("wishlist/" + cleanEmail) : null;
+
     const grid = document.querySelector(".horizontal-grid");
     const template = document.createElement("div");
 
@@ -19,51 +23,61 @@ window.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
     `;
+
     const templateCard = template.firstElementChild;
 
-    db.once("value").then(snapshot => {
-        const products = snapshot.val();
-        if (!products) return;
+    if (!wishlistRef) {
+        alert("User not logged in.");
+        return;
+    }
 
-        const shuffled = shuffleArray(Object.entries(products)).slice(0, 6);
+    wishlistRef.once("value").then((wishlistSnap) => {
+        const wishlistData = wishlistSnap.val() || {};
 
-        shuffled.forEach(([key, product]) => {
-            const card = templateCard.cloneNode(true);
+        db.once("value").then(snapshot => {
+            const products = snapshot.val();
+            if (!products) return;
 
-            const img = card.querySelector(".product-photo");
-            img.src = product.photo;
-            img.onerror = () => img.src = "icons/prod_image.png";
+            const shuffled = shuffleArray(Object.entries(products)).slice(0, 6);
 
-            card.querySelector(".brand-name").textContent = product.brand;
-            card.querySelector(".product-name").textContent = product.name;
+            shuffled.forEach(([key, product]) => {
+                const card = templateCard.cloneNode(true);
 
-            updateSkinTypeBadge(card, product.skin);
+                const img = card.querySelector(".product-photo");
+                img.src = product.photo;
+                img.onerror = () => img.src = "icons/prod_image.png";
 
-            const favBtn = card.querySelector(".wishlist-container");
-            favBtn.setAttribute("data-key", key);
-            updateHeartIcon(favBtn, product.favourite);
+                card.querySelector(".brand-name").textContent = product.brand;
+                card.querySelector(".product-name").textContent = product.name;
 
-            favBtn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const newVal = !product.favourite;
-                db.child(key).update({ favourite: newVal });
-                product.favourite = newVal;
-                updateHeartIcon(favBtn, newVal);
+                updateSkinTypeBadge(card, product.skin);
 
-                // Përditëso dhe popup nëse është hapur
-                const popupKey = document.getElementById("productPopup").getAttribute("data-key");
-                if (popupKey === key) {
-                    const popupFav = document.querySelector(".wishlist-container-popup");
-                    updateHeartIcon(popupFav, newVal);
-                }
+                const favBtn = card.querySelector(".wishlist-container");
+                favBtn.setAttribute("data-key", key);
+                const isInWishlist = !!wishlistData[key];
+                updateHeartIcon(favBtn, isInWishlist);
+
+                favBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+
+                    const isActive = favBtn.getAttribute("data-active") === "true";
+                    updateHeartIcon(favBtn, !isActive);
+
+                    const ref = firebase.database().ref("wishlist/" + cleanEmail + "/" + key);
+                    if (isActive) {
+                        ref.remove();
+                    } else {
+                        ref.set(true);
+                    }
+                });
+
+                card.addEventListener("click", (e) => {
+                    if (e.target.closest(".wishlist-container")) return;
+                    showPopup(product, key, isInWishlist);
+                });
+
+                grid.appendChild(card);
             });
-
-            card.addEventListener("click", (e) => {
-                if (e.target.closest(".wishlist-container")) return;
-                showPopup(product, key);
-            });
-
-            grid.appendChild(card);
         });
     });
 });
@@ -116,7 +130,7 @@ function updateSkinTypeBadge(card, skin) {
     }
 }
 
-function showPopup(product, key) {
+function showPopup(product, key, isInWishlist = false) {
     const popup = document.getElementById("productPopup");
     const overlay = document.getElementById("popupOverlay");
 
@@ -134,17 +148,30 @@ function showPopup(product, key) {
     };
 
     const favBtn = popup.querySelector(".wishlist-container-popup");
-    updateHeartIcon(favBtn, product.favourite);
+    updateHeartIcon(favBtn, isInWishlist);
 
     favBtn.onclick = () => {
-        const newVal = !product.favourite;
-        db.child(key).update({ favourite: newVal });
-        product.favourite = newVal;
-        updateHeartIcon(favBtn, newVal);
+        const userEmail = localStorage.getItem("email");
+        if (!userEmail) {
+            alert("Login required.");
+            return;
+        }
 
-        // Përditëso edhe kartën përkatëse
+        const cleanEmail = userEmail.replace(/\./g, "_");
+        const wishlistRef = firebase.database().ref("wishlist/" + cleanEmail + "/" + key);
+
+        const isActive = favBtn.getAttribute("data-active") === "true";
+        updateHeartIcon(favBtn, !isActive);
+
+        if (isActive) {
+            wishlistRef.remove();
+        } else {
+            wishlistRef.set(true);
+        }
+
+        // Update zemrat në çdo kartë
         const allCards = document.querySelectorAll(`.wishlist-container[data-key="${key}"]`);
-        allCards.forEach(btn => updateHeartIcon(btn, newVal));
+        allCards.forEach(btn => updateHeartIcon(btn, !isActive));
     };
 
     overlay.classList.add("active");

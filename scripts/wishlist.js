@@ -1,30 +1,39 @@
+// scripts/wishlist.js
+
 const db = firebase.database().ref("products");
 
 window.addEventListener("DOMContentLoaded", () => {
     const userEmail = localStorage.getItem("email");
-    const cleanEmail = userEmail ? userEmail.replace(/\./g, "_") : null;
-    const wishlistRef = cleanEmail ? firebase.database().ref("wishlist/" + cleanEmail) : null;
+    if (!userEmail) {
+        alert("You must be logged in to see your wishlist.");
+        return;
+    }
+
+    const cleanEmail = userEmail.replace(/\./g, "_");
+    const wishlistRef = firebase.database().ref("wishlist/" + cleanEmail);
 
     const grid = document.querySelector(".products-grid");
     const originalTemplate = document.querySelector(".product-card").cloneNode(true);
 
     document.querySelector(".product-card").remove();
 
-    if (!wishlistRef) {
-        alert("User not logged in.");
-        return;
-    }
-
     wishlistRef.once("value").then((wishlistSnapshot) => {
-        const wishlistData = wishlistSnapshot.val() || {};
+        const wishlist = wishlistSnapshot.val();
+        if (!wishlist) {
+            grid.innerHTML = "<p style='text-align:center;'>Your wishlist is empty.</p>";
+            return;
+        }
 
-        db.on("value", (snapshot) => {
-            const products = snapshot.val();
-            grid.innerHTML = "";
+        db.once("value").then((productsSnapshot) => {
+            const products = productsSnapshot.val();
 
-            Object.entries(products).forEach(([key, product]) => {
+            Object.entries(wishlist).forEach(([key, _]) => {
+                const product = products[key];
+                if (!product) return;
+
                 const card = originalTemplate.cloneNode(true);
                 card.style.display = "block";
+                card.setAttribute("data-key", key);
 
                 const img = card.querySelector(".product-photo");
                 img.src = product.photo;
@@ -36,28 +45,24 @@ window.addEventListener("DOMContentLoaded", () => {
                 updateSkinTypeBadge(card, product.skin);
 
                 const favBtn = card.querySelector(".wishlist-container");
+                const favIcon = favBtn.querySelector("img");
                 favBtn.setAttribute("data-key", key);
-
-                const isInWishlist = !!wishlistData[key];
-                updateHeartIcon(favBtn, isInWishlist);
+                updateHeartIcon(favBtn, true);
 
                 favBtn.addEventListener("click", (e) => {
                     e.stopPropagation();
 
-                    const isActive = favBtn.getAttribute("data-active") === "true";
-                    updateHeartIcon(favBtn, !isActive);
-
                     const wishlistItemRef = firebase.database().ref("wishlist/" + cleanEmail + "/" + key);
-                    if (isActive) {
-                        wishlistItemRef.remove();
-                    } else {
-                        wishlistItemRef.set(true);
-                    }
+                    wishlistItemRef.remove();
+
+                    firebase.database().ref("products/" + key).update({ favourite: false });
+
+                    card.remove();
                 });
 
                 card.addEventListener("click", (e) => {
                     if (e.target.closest(".wishlist-container")) return;
-                    showPopup(product, key, isInWishlist);
+                    showPopup(product, key);
                 });
 
                 grid.appendChild(card);
@@ -72,7 +77,7 @@ function updateHeartIcon(button, state) {
     img.src = state ? "icons/active_heart.png" : "icons/heart.png";
 }
 
-function showPopup(product, key, isInWishlist = false) {
+function showPopup(product, key) {
     const popup = document.getElementById("productPopup");
     const overlay = document.getElementById("popupOverlay");
 
@@ -95,7 +100,7 @@ function showPopup(product, key, isInWishlist = false) {
     popup.setAttribute("data-key", key);
 
     const popupBtn = popup.querySelector(".wishlist-container-popup");
-    updateHeartIcon(popupBtn, isInWishlist);
+    updateHeartIcon(popupBtn, true);
 
     popupBtn.onclick = () => {
         const userEmail = localStorage.getItem("email");
@@ -107,14 +112,15 @@ function showPopup(product, key, isInWishlist = false) {
         const cleanEmail = userEmail.replace(/\./g, "_");
         const wishlistRef = firebase.database().ref("wishlist/" + cleanEmail + "/" + key);
 
-        const isActive = popupBtn.getAttribute("data-active") === "true";
-        updateHeartIcon(popupBtn, !isActive);
+        wishlistRef.remove();
+        firebase.database().ref("products/" + key).update({ favourite: false });
 
-        if (isActive) {
-            wishlistRef.remove();
-        } else {
-            wishlistRef.set(true);
-        }
+        popup.classList.remove("open");
+        document.getElementById("popupOverlay").classList.remove("active");
+        document.body.style.overflow = "auto";
+
+        const cardToRemove = document.querySelector(`.product-card[data-key="${key}"]`);
+        if (cardToRemove) cardToRemove.remove();
     };
 
     overlay.classList.add("active");
@@ -168,41 +174,3 @@ function updateSkinTypeBadge(card, skinType) {
     skinElement.classList.add(className);
     skinElement.textContent = label;
 }
-
-function setupCategoryTabs() {
-    const tabs = document.querySelectorAll(".tab");
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
-            tab.classList.add("active");
-
-            const selectedCategory = tab.textContent.trim().toLowerCase();
-            const cards = document.querySelectorAll(".products-grid .product-card");
-            cards.forEach(card => {
-                const name = card.querySelector(".product-name").textContent.trim().toLowerCase();
-                const brand = card.querySelector(".brand-name").textContent.trim().toLowerCase();
-
-                const match = Object.values(window.productsCache || {}).find(prod =>
-                    prod.name.toLowerCase() === name && prod.brand.toLowerCase() === brand
-                );
-
-                if (!match) return card.style.display = "none";
-
-                if (selectedCategory === "all" || match.category.toLowerCase() === selectedCategory) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        });
-    });
-}
-
-const productsCache = {};
-db.once("value").then(snapshot => {
-    Object.entries(snapshot.val()).forEach(([_, product]) => {
-        const id = `${product.name.toLowerCase()}_${product.brand.toLowerCase()}`;
-        productsCache[id] = product;
-    });
-    window.productsCache = productsCache;
-});

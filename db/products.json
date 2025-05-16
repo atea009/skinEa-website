@@ -1,0 +1,114 @@
+{
+    "prod1": {
+        "brand": "skin1004",
+        "category": "Moisturiser",
+        "desc": "krem me centella për lëkurë të kombinuar",
+        "favourite": false,
+        "ingredients": "centella, niacinamide",
+        "name": "Centella Moisturizer",
+        "photo": "https://skinea.netlify.app/icons/photos/prod1.jpg",
+        "skin": "combination skin",
+        "buyLink": "https://luarasi-univ.edu.al/sq/"
+    },
+    "prod2": {
+        "brand": "cosrx",
+        "category": "Cleanser",
+        "desc": "pastrues për lëkurë të yndyrshme",
+        "favourite": false,
+        "ingredients": "salicylic acid",
+        "name": "Oily Cleanser",
+        "photo": "https://skinea.netlify.app/icons/photos/prod2.jpg",
+        "skin": "oily skin",
+        "buyLink": "https://luarasi-univ.edu.al/sq/"
+    },
+    "prod3": {
+        "brand": "klairs",
+        "category": "Toner",
+        "desc": "toner i butë për lëkurë normale",
+        "favourite": false,
+        "ingredients": "panthenol, betaine",
+        "name": "Soft Toner",
+        "photo": "https://skinea.netlify.app/icons/photos/prod3.jpg",
+        "skin": "normal skin",
+        "buyLink": "https://luarasi-univ.edu.al/sq/"
+    },
+    "prod4": {
+        "brand": "innisfree",
+        "category": "Serum",
+        "desc": "serum hidratues për të gjitha llojet e lëkurës",
+        "favourite": false,
+        "ingredients": "green tea",
+        "name": "Hydrating Serum",
+        "photo": "https://skinea.netlify.app/icons/photos/prod4.jpg",
+        "skin": "all skin types",
+        "buyLink": "https://luarasi-univ.edu.al/sq/"
+    },
+    "prod5": {
+        "brand": "dr.jart",
+        "category": "SPF",
+        "desc": "mbrojtje nga dielli për lëkurë të thatë",
+        "favourite": false,
+        "ingredients": "zinc oxide, SPF50",
+        "name": "Sun Block",
+        "photo": "https://skinea.netlify.app/icons/photos/prod5.jpg",
+        "skin": "dry skin",
+        "buyLink": "https://luarasi-univ.edu.al/sq/"
+    },
+    "prod6": {
+        "brand": "somebymi",
+        "category": "Special treatment",
+        "desc": "trajtues për lëkurë me zonë të kombinuar të thatë",
+        "favourite": false,
+        "ingredients": "centella asiatica",
+        "name": "Combo Repair",
+        "photo": "https://skinea.netlify.app/icons/photos/prod6.jpg",
+        "skin": "dry/combo skin",
+        "buyLink": "https://luarasi-univ.edu.al/sq/"
+    },
+    "prod7": {
+        "brand": "skinfood",
+        "category": "Cleanser",
+        "desc": "pastrues për lëkurë me zona të yndyrshme",
+        "favourite": false,
+        "ingredients": "black sugar",
+        "name": "Dual Cleanser",
+        "photo": "https://skinea.netlify.app/icons/photos/prod7.jpg",
+        "skin": "oily/combo skin",
+        "buyLink": "https://luarasi-univ.edu.al/sq/"
+    },
+    "prod8": {
+        "brand": "the ordinary",
+        "category": "Serum",
+        "desc": "serum për lëkurë normale",
+        "favourite": false,
+        "ingredients": "retinol, squalane",
+        "name": "Retinol 0.5%",
+        "photo": "https://skinea.netlify.app/icons/photos/prod8.jpg",
+        "skin": "normal skin",
+        "buyLink": "https://luarasi-univ.edu.al/sq/"
+    },
+    "prod9": {
+        "brand": "laneige",
+        "category": "Moisturiser",
+        "desc": "krem freskues për lëkurë të thatë",
+        "favourite": false,
+        "ingredients": "mineral water, hyaluronic acid",
+        "name": "Water Cream",
+        "photo": "https://skinea.netlify.app/icons/photos/prod9.jpg",
+        "skin": "dry skin",
+        "buyLink": "https://luarasi-univ.edu.al/sq/"
+    },
+    "prod10": {
+        "brand": "skin1004",
+        "category": "Special treatment",
+        "desc": "trajtues balancues për të gjitha llojet e lëkurës",
+        "favourite": false,
+        "ingredients": "zinc PCA",
+        "name": "Skin Balancer",
+        "photo": "https://skinea.netlify.app/icons/photos/prod10.jpg",
+        "skin": "all skin types",
+        "buyLink": "https://luarasi-univ.edu.al/sq/"
+    }
+
+
+}
