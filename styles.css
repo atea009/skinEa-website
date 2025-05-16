@@ -389,12 +389,14 @@
     }
     
     .detail-select {
-        border: none;
+        width: 110px;
         background: transparent;
+        border: none;
         font-weight: bold;
         color: #F3A5DA;
         font-size: 16px;
-        padding-right: 0;
+        padding-right: 20px;
+        cursor: pointer;
     }
     
     .skin-section {
