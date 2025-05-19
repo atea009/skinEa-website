@@ -7,7 +7,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const grid = document.querySelector(".products-grid");
     const originalTemplate = document.querySelector(".product-card").cloneNode(true);
-
     document.querySelector(".product-card").remove();
 
     if (!wishlistRef) {
@@ -21,6 +20,8 @@ window.addEventListener("DOMContentLoaded", () => {
         db.on("value", (snapshot) => {
             const products = snapshot.val();
             grid.innerHTML = "";
+
+            const productsCache = {};
 
             Object.entries(products).forEach(([key, product]) => {
                 const card = originalTemplate.cloneNode(true);
@@ -43,7 +44,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 favBtn.addEventListener("click", (e) => {
                     e.stopPropagation();
-
                     const isActive = favBtn.getAttribute("data-active") === "true";
                     updateHeartIcon(favBtn, !isActive);
 
@@ -60,8 +60,17 @@ window.addEventListener("DOMContentLoaded", () => {
                     showPopup(product, key, isInWishlist);
                 });
 
+                const cacheKey = `${product.name.toLowerCase()}_${product.brand.toLowerCase()}`;
+                productsCache[cacheKey] = product;
+
                 grid.appendChild(card);
             });
+
+            // Ruaj cache globalisht për filtrat
+            window.productsCache = productsCache;
+
+            // Aktivizo filtrat pasi kartat janë vendosur
+            setupCategoryTabs();
         });
     });
 });
@@ -178,6 +187,7 @@ function setupCategoryTabs() {
 
             const selectedCategory = tab.textContent.trim().toLowerCase();
             const cards = document.querySelectorAll(".products-grid .product-card");
+
             cards.forEach(card => {
                 const name = card.querySelector(".product-name").textContent.trim().toLowerCase();
                 const brand = card.querySelector(".brand-name").textContent.trim().toLowerCase();
@@ -197,12 +207,3 @@ function setupCategoryTabs() {
         });
     });
 }
-
-const productsCache = {};
-db.once("value").then(snapshot => {
-    Object.entries(snapshot.val()).forEach(([_, product]) => {
-        const id = `${product.name.toLowerCase()}_${product.brand.toLowerCase()}`;
-        productsCache[id] = product;
-    });
-    window.productsCache = productsCache;
-});

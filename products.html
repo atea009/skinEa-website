@@ -39,12 +39,13 @@
                 </div>
                 <div class="details-dropdown" id="detailsDropdown">
                     <!-- Përmbajtja e xhepit -->
-                    <p class="detail-line">Username: Atea</p>
-                    <p class="detail-line">Email: skin@example.com</p>
+                    <p class="detail-line">Username: <span id="profileUsername">Atea</span></p>
+                    <p class="detail-line">Email: <span id="profileEmail">skin@example.com</span></p>
+
                     <div class="detail-group">
                         <div class="detail-row">
                             <span class="detail-label">Gender</span>
-                            <select class="detail-select">
+                            <select class="detail-select" id="genderSelect">
                                 <option>Female</option>
                                 <option>Male</option>
                                 <option>Other</option>
@@ -53,7 +54,7 @@
 
                         <div class="detail-row">
                             <span class="detail-label">Age group</span>
-                            <select class="detail-select">
+                            <select class="detail-select" id="ageGroupSelect">
                                 <option>Under 18</option>
                                 <option>18–24</option>
                                 <option>25–34</option>
@@ -68,21 +69,20 @@
                     <div class="skin-section">
                         <p class="detail-label">Skin Color</p>
                         <div class="skincolor-grid">
-                            <div class="skincolor color-1 "></div>
-                            <div class="skincolor color-2"></div>
-                            <div class="skincolor color-3 selected"></div>
-                            <div class="skincolor color-4"></div>
-                            <div class="skincolor color-5"></div>
-                            <div class="skincolor color-6"></div>
+                            <div class="skincolor color-1" data-color="fair"></div>
+                            <div class="skincolor color-2" data-color="light"></div>
+                            <div class="skincolor color-3 selected" data-color="medium"></div>
+                            <div class="skincolor color-4" data-color="olive"></div>
+                            <div class="skincolor color-5" data-color="brown"></div>
+                            <div class="skincolor color-6" data-color="dark"></div>
                         </div>
                     </div>
-
 
                     <div class="skin-section">
                         <p class="detail-label">Skin Type</p>
                         <div class="skin-types">
                             <button class="skin-btn selected">Normal</button>
-                            <button class="skin-btn ">Combined</button>
+                            <button class="skin-btn">Combined</button>
                             <button class="skin-btn">Oily</button>
                             <button class="skin-btn">Dry</button>
                         </div>
@@ -101,9 +101,8 @@
                             <button class="issue-btn">Dark circles</button>
                         </div>
                     </div>
-
-
                 </div>
+
 
                 <!-- Grupi tjeter -->
                 <div class="options-group">
@@ -587,6 +586,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="scripts/firebase.js"></script>
     <script src="scripts/products.js"></script>
+    <script src="scripts/profile.js"></script>
 
 
 </body>
