@@ -710,21 +710,57 @@
     /* 🌈 Backgrounds with irregular gradients and rich colors */
     
     .scan-bg {
-        background: radial-gradient(circle at 30% 30%, #f6d7ff, #d7b8ff, #a7b9ff, #8bd3ff, #ffedfb);
-        background-size: 500% 500%;
-        animation: gradientShift 10s ease infinite;
+        background: radial-gradient( circle at 30% 30%, #ffe0eb, /* rozë e butë pastel */
+        #ffd1dc, /* rozë pambuku */
+        #ffc6b8, /* pjeshkë rozë */
+        #ffe9cc, /* rozë e përzier me të verdhë */
+        #fff5e6/* e verdhë e bardhë – e çelët për shpërndarje */
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 10s ease-in-out infinite;
+    }
+    /* Rutinë: sfond i animuar real me ngjyra portokalli → lejla */
+    
+    @keyframes gradientShift {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
     }
     
     .routine-bg {
-        background: conic-gradient(from 180deg, #fff0f5, #ffd6d6, #fff3c2, #ffc0cb, #f8e8ff);
+        background: linear-gradient( 135deg, #ff914d, #ffb066, #ffcfc2, #eabfff, #c6a9ff);
         background-size: 400% 400%;
-        animation: gradientShift 10s ease infinite;
+        background-repeat: no-repeat;
+        animation: gradientShift 12s ease-in-out infinite;
     }
     
     .ai-bg {
-        background: radial-gradient(circle at 70% 40%, #c0f0ff, #a0cfff, #85a8ff, #6f7cff, #e5f3ff);
-        background-size: 500% 500%;
-        animation: gradientShift 10s ease infinite;
+        background: radial-gradient( circle at 70% 40%, #d0e6ff, /* blu shumë e çelët */
+        #cdbdff, /* lejla pastel */
+        #f3c7e8, /* rozë e butë – pambuku */
+        #b3c7ff, /* blu-lejla e butë */
+        #f5e8ff/* lejla rozë për shpërndarje finale */
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease-in-out infinite;
+    }
+    
+    #widget-scan .widget-label {
+        -webkit-text-stroke: 0.7px #ea75bb;
+    }
+    
+    #widget-routine .widget-label {
+        -webkit-text-stroke: 0.7px #e68c58;
+    }
+    
+    #widget-ai .widget-label {
+        -webkit-text-stroke: 0.7px #64a1f2;
     }
     /*WIDGETS PRODUCT*/
     
